@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<translations>
+    <translation id="recipe_edit_title">Edit recipe</translation>
+    <translation id="recipe_edit_lasting">Lasting</translation>
+    <translation id="recipe_edit_temperature">Temperature</translation>
+    <translation id="recipe_edit_ingredients">Ingredients</translation>
+</translations>

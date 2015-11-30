@@ -1,0 +1,124 @@
+{
+    "name": "Landreuse",
+    "date": "2015-09-09T22:00:00.000Z",
+    "author": "Landru",
+    "uuid": "0000",
+    "steps": [
+ {
+            "name": "Mashing",
+            "lasting": 15,
+            "temperature": 45,
+            "ingredients": [
+                {
+                    "name": "Pilsner",
+                    "type": "fermentable",
+                    "yield": "81",
+                    "color": "2",
+                    "recommendMash": "true",
+                    "qty": {
+                        "value": 6,
+                        "unit": {
+                            "name": "Kg",
+                            "type": "mass.kg"
+                        }
+                    }
+                }, {
+                "name": "Tap water",
+                "type": "water",
+                "qty": {
+                    "value": 20,
+                    "unit": {
+                        "name": "L",
+                        "type": "volume.l"
+                    }
+                }
+            }, {
+                "name": "Smoked Malt",
+                "type": "fermentable",
+                "yield": "81",
+                "color": "2.0",
+                "recommendMash": "true",
+                "qty": {
+                    "value": 2,
+                    "unit": {
+                        "name": "Kg",
+                        "type": "mass.kg"
+                    }
+                }
+            }, {
+                "name": "Chocolat (Malt)",
+                "version": "1",
+                "amout": "0.0",
+                "type": "fermentable",
+                "yield": "71",
+                "addAfterBoil": "false",
+                "color": "500.0",
+                "qty": {
+                    "value": 0.2,
+                    "unit": {
+                        "name": "Kg",
+                        "type": "mass.kg"
+                    }
+                }
+                }
+            ],
+            "reduced": false
+        },
+        {
+            "name": "First step",
+            "lasting": 20,
+            "temperature": 68,
+            "ingredients": [],
+            "reduced": false
+        },
+        {
+            "name": "Second Step",
+            "lasting": 45,
+            "temperature": 62,
+            "ingredients": []
+        },
+        {
+            "name": "Enzym",
+            "lasting": 5,
+            "temperature": 77,
+            "ingredients": [],
+            "reduced": false
+        },
+        {
+            "name": "Rinsing",
+            "lasting": 30,
+            "temperature": 80,
+            "ingredients": [{
+                "name": "Tap water",
+                "type": "water",
+                "qty": {
+                    "value": 20,
+                    "unit": {
+                        "name": "L",
+                        "type": "volume.l"
+                    }
+                }
+                }],
+            "reduced": false
+        },
+        {
+            "name": "Boiling",
+            "lasting": 60,
+            "temperature": 100,
+            "ingredients": [{
+                "name": "Pearle ",
+                "alpha": "7.2",
+                "form": "Leaf",
+                "type": "hop",
+                "qty": {
+                    "value": 40,
+                    "unit": {
+                        "name": "g",
+                        "type": "mass.g"
+                    }
+                }
+                }],
+            "reduced": false
+        }
+    ]
+}
