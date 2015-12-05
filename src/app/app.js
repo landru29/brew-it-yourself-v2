@@ -3,13 +3,15 @@ angular.module('brewItYourself', [
     'application.config',
     'ui.bootstrap',
     'ui.router',
+    'ui.sortable',
     'ngCookies',
     'ngStorage',
     'ngSanitize',
     'pascalprecht.translate',
     'ngResource',
     'flash',
-    'angularMoment'
+    'angularMoment',
+    'BeerToolbox'
 ])
     .config(function($urlRouterProvider, $locationProvider) {
         'use strict';
@@ -64,6 +66,5 @@ angular.module('brewItYourself', [
             $translate.refresh();
         });
     })
-
 
 ;

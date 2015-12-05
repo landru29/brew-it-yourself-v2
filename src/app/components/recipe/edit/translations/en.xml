@@ -4,4 +4,7 @@
     <translation id="recipe_edit_lasting">Lasting</translation>
     <translation id="recipe_edit_temperature">Temperature</translation>
     <translation id="recipe_edit_ingredients">Ingredients</translation>
+
+    <translation id="recipe_edit_steps"Steps</translation>
+    <translation id="recipe_edit_characteristics">Charactéristics</translation>
 </translations>

@@ -1,34 +1,37 @@
-<div class="container-fluid">
-    <header>
-        <h1>
-            <span data-translate="recipe_edit_title"></span> - 
-            <span>{{RecipeEdit.recipe.name | stringLimit:30:'middle'}}</span>
-        </h1>
-    </header>
-	<div class="row">
-		<div class="col-md-12">
-            <uib-accordion class="recipe-edit">
-                <uib-accordion-group data-ng-repeat="step in RecipeEdit.recipe.steps">
-                    <uib-accordion-heading>
-                        <span>{{$index}}</span> :
-                        <span>{{step.name}}</span>
-                    </uib-accordion-heading>
-                    <div>
-                        <label data-translate="recipe_edit_lasting"></label>
-                        <span>{{step.lasting}}</span>
-                    </div>
-                    <div>
-                        <label data-translate="recipe_edit_temperature"></label>
-                        <span>{{step.temperature}}</span>
-                    </div>
-                    <div>
-                        <label data-translate="recipe_edit_ingredients"></label>
-                        <ul class="ingredient-list">
-                            <li data-ng-repeat="ingredient in step.ingredients">{{ingredient.name}}</li>
-                        </ul>
-                    </div>
-                </uib-accordion-group>
-            </uib-accordion>
+<div class="container-fluid recipe-edit">
+  <header>
+    <h1>
+      <span data-translate="recipe_edit_title"></span> -
+      <span>{{RecipeEdit.recipe.name | stringLimit:30:'middle'}}</span>
+    </h1>
+  </header>
+  <div class="row">
+    <div class="col-md-6 col-xs-12">
+      <h2 data-translate="recipe_edit_steps"></h2>
+      <uib-accordion>
+        <div data-ui-sortable="RecipeEdit.sortableOptions" data-ng-model="RecipeEdit.recipe.steps">
+          <uib-accordion-group data-ng-repeat="step in RecipeEdit.recipe.steps">
+            <uib-accordion-heading>
+              <div class="sortableHandle">
+                <span>{{$index}}</span> :
+                <span>{{step.name}}</span>
+                <span>
+                  <span class="step-summary">
+                    <span data-ng-bind="{{step.lasting}}"></span>
+                    <i class="fa fa-clock-o"></i> -
+                    <span data-ng-bind="{{step.temperature}}"></span>
+                    <i class="beer-icon beer-thermometer"></i>
+                  </span>
+                </span>
+              </div>
+            </uib-accordion-heading>
+            <div data-ng-include="'app/components/recipe/edit/step/recipe-edit-step.view.html'"></div>
+          </uib-accordion-group>
         </div>
-	</div>
+      </uib-accordion>
+    </div>
+    <div class="col-md-6 col-xs-12">
+      <h2 data-translate="recipe_edit_characteristics"></h2>
+    </div>
+  </div>
 </div>

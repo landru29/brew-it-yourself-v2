@@ -1,0 +1,16 @@
+<div data-ng-controller="RecipeEditStepCtrl as RecipeEditStep">
+  <div>
+      <label data-translate="recipe_edit_lasting"></label>
+      <span>{{RecipeEditStep.step.lasting}}</span>
+  </div>
+  <div>
+      <label data-translate="recipe_edit_temperature"></label>
+      <span>{{RecipeEditStep.step.temperature}}</span>
+  </div>
+  <div>
+      <label data-translate="recipe_edit_ingredients"></label>
+      <ul class="ingredient-list">
+          <li data-ng-repeat="ingredient in RecipeEditStep.step.ingredients">{{ingredient.name}}</li>
+      </ul>
+  </div>
+</div>

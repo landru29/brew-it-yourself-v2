@@ -7,4 +7,15 @@
 
 body {
     background-color: @application-bg;
+    
+    h1 {
+        margin-bottom: 50px;
+        font-family: sans-serif;
+        font-weight: bold;
+        &:before {
+            content: "\f219";
+            font: normal normal normal 32px FontAwesome;
+            color: blue;
+        }
+    }
 }

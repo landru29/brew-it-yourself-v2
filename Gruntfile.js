@@ -17,10 +17,11 @@ module.exports = function (grunt) {
 
     var project= {
         build: './build',
-        dist: './.dist',
+        dist: './dist',
         src: './src',
         app: './src/app',
-        bower: './bower_components'
+        bower: './bower_components',
+        beerFont: './beer-font'
     };
 
     var pkg = (require('./package.json'));
@@ -104,12 +105,7 @@ module.exports = function (grunt) {
                         dest: '<%= project.build%>/assets',
                         filter: 'isFile',
                         baseFile: [
-                            'ar.json',
-                            'it.json',
-                            'de.json',
-                            'pl.json',
-                            'cs.json',
-                            'lt.json'
+                            'de.json'
                         ]
                     }
                 ]
@@ -146,7 +142,8 @@ module.exports = function (grunt) {
 
         clean: {
             dist: ['<%= project.dist%>', '<%= project.build%>'],
-            dev: ['<%= project.build%>']
+            dev: ['<%= project.build%>'],
+            font: ['<%= project.beerFont%>']
         },
 
         filerev: {
@@ -252,6 +249,13 @@ module.exports = function (grunt) {
                         src: ['<%= project.src%>/index.html'],
                         dest: '<%= project.dist%>/',
                         filter: 'isFile'
+                    },
+                    {
+                        expand: true,
+                        flatten: true,
+                        src: ['<%= project.src%>/favicon.ico'],
+                        dest: '<%= project.dist%>/',
+                        filter: 'isFile'
                     }
                 ]
             },
@@ -274,7 +278,7 @@ module.exports = function (grunt) {
                         flatten: false,
                         cwd: '<%= project.bower%>/font-awesome',
                         src: ['fonts/**/*'],
-                        dest: '<%= project.dist%>/',
+                        dest: '<%= project.build%>/',
                         filter: 'isFile'
                     },
                     {
@@ -282,10 +286,36 @@ module.exports = function (grunt) {
                         flatten: false,
                         cwd: '<%= project.bower%>/bootstrap',
                         src: ['fonts/**/*'],
-                        dest: '<%= project.dist%>/',
+                        dest: '<%= project.build%>/',
+                        filter: 'isFile'
+                    },
+                    {
+                        expand: true,
+                        flatten: false,
+                        cwd: '<%= project.beerFont%>',
+                        src: ['fonts/**/*'],
+                        dest: '<%= project.build%>/',
+                        filter: 'isFile'
+                    },
+                    {
+                        expand: true,
+                        flatten: true,
+                        cwd: '<%= project.beerFont%>',
+                        src: ['icons.css'],
+                        dest: '<%= project.build%>/',
                         filter: 'isFile'
                     }
                 ]
+            },
+            dist: {
+                files: [{
+                    expand: true,
+                    flatten: false,
+                    cwd: '<%= project.build%>',
+                    src: ['fonts/**/*'],
+                    dest: '<%= project.dist%>/',
+                    filter: 'isFile'
+                }]
             }
         },
 
@@ -331,12 +361,29 @@ module.exports = function (grunt) {
                 title: 'Application',
                 src: ['src/app/**/*.js']
             }
-        }
+        },
+
+        webfont: {
+          "beer-icons": {
+              src: 'icons/*.svg',
+              dest: '<%= project.beerFont%>/fonts',
+              destCss: '<%= project.beerFont%>',
+              options: {
+                fontFilename: 'beer-{hash}',
+                templateOptions: {
+                baseClass: 'beer-icon',
+                classPrefix: 'beer-',
+                mixinPrefix: 'beer-'
+            }
+              }
+          }
+      }
 
     });
 
     grunt.registerTask('serve', [
         'clean:dev',
+        'copy:fonts',
         'concat:moment',
         'ngconstant',
         'wiredep:style',
@@ -361,6 +408,7 @@ module.exports = function (grunt) {
         'copy:fonts',
         'concat:moment',
         'copy:conf',
+        'copy:dist',
         'less',
         'useminPrepare',
         'ngtemplates:TatUi',
@@ -375,4 +423,6 @@ module.exports = function (grunt) {
     ]);
 
     grunt.registerTask('default', ['dist']);
+
+    grunt.registerTask('font', ['clean:font', 'webfont']);
 };

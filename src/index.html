@@ -6,17 +6,21 @@
 
     <base href="/">
 
-    <title>Template</title>
+    <link rel="shortcut icon" href="/favicon.ico">
+
+    <title>Brew-it-yourself</title>
 
 
     <!-- build:css(.) styles/vendor.min.css -->
     <!-- bower:css -->
     <link rel="stylesheet" href="bower_components/angular-flash-alert/dist/angular-flash.css" />
+    <link rel="stylesheet" href="bower_components/AngularJS-Toaster/toaster.css" />
     <!-- endbower -->
     <!-- endbuild -->
 
     <!-- build:css(.) styles/main.min.css -->
     <link rel="stylesheet" href="build/main.css" />
+    <link rel="stylesheet" href="build/icons.css" />
     <!-- endbuild -->
 
     <!-- build:js(.) scripts/vendor.min.js -->
@@ -28,6 +32,8 @@
     <script src="bower_components/angular-cookies/angular-cookies.js"></script>
     <script src="bower_components/angular-animate/angular-animate.js"></script>
     <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+    <script src="bower_components/jquery-ui/jquery-ui.js"></script>
+    <script src="bower_components/angular-ui-sortable/sortable.js"></script>
     <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
     <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
     <script src="bower_components/angular-translate/angular-translate.js"></script>
@@ -39,6 +45,9 @@
     <script src="bower_components/lodash/lodash.js"></script>
     <script src="bower_components/moment/moment.js"></script>
     <script src="bower_components/angular-moment/angular-moment.js"></script>
+    <script src="bower_components/AngularJS-Toaster/toaster.js"></script>
+    <script src="bower_components/angular-mocks/angular-mocks.js"></script>
+    <script src="bower_components/beer-toolbox/dist/beer-toolbox.min.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
 
@@ -52,6 +61,13 @@
     <script src="src/app/components/home/home.controller.js"></script>
     <script src="app/components/recipe/edit/recipe-edit.route.js"></script>
     <script src="app/components/recipe/edit/recipe-edit.controller.js"></script>
+    <script src="app/components/recipe/edit/step/recipe-edit-step.controller.js"></script>
+
+    <script src="app/shared/recipe/recipe.service.js"></script>
+    <script src="app/shared/step/step.service.js"></script>
+    <script src="app/shared/ingredient/ingredient.service.js"></script>
+
+    <script src="app/shared/defaults/defaults.constant.js"></script>
     <!-- endbuild -->
 
     <script src="scripts/config.js"></script>

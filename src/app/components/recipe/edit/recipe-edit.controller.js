@@ -1,7 +1,11 @@
-angular.module('brewItYourself').controller('RecipeEditCtrl', function(Loader) {
+angular.module('brewItYourself').controller('RecipeEditCtrl', function(Loader, BeerSugar) {
     'use strict';
     var self = this;
-    
+
+    this.sortableOptions = {
+      handle: '.sortableHandle'
+    };
+
     function init() {
         self.recipe = {};
         Loader.file().load('sample.json').then(
@@ -13,7 +17,6 @@ angular.module('brewItYourself').controller('RecipeEditCtrl', function(Loader) {
             }
         );
     }
-    
+
     init();
 });
-                                            

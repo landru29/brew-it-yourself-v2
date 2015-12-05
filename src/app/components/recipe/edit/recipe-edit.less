@@ -1,3 +1,5 @@
+@import "../../../constants.less";
+
 .recipe-edit {
     .panel-body {
         label {
@@ -10,5 +12,17 @@
             padding-left: 0px;
             vertical-align: top;
         }
+    }
+    .step-summary {
+      float: right;
+      font-size: 0.8em;
+      &:hover {
+        font-size:1.1em;
+        color: blue;
+      }
+    }
+    h2 {
+      margin-bottom: 1em;
+      border-bottom: solid 2px @lager-color
     }
 }
