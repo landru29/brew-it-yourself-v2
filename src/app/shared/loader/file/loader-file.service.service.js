@@ -4,7 +4,7 @@ angular.module('brewItYourself').service('LoaderFile', function($http, $q) {
             $http.get('assets/data/' + filename).then(
                 function(response) {
                     resolve(response.data);
-                }, 
+                },
                 reject
             );
         });

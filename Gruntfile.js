@@ -125,7 +125,7 @@ module.exports = function (grunt) {
 
         karma: {
             unit: {
-                configFile: 'test/karma.conf.js',
+                configFile: 'karma.conf.js',
                 singleRun: true
             }
         },
@@ -423,6 +423,8 @@ module.exports = function (grunt) {
     ]);
 
     grunt.registerTask('default', ['dist']);
+
+    grunt.registerTask('test', ['ngconstant', 'karma']);
 
     grunt.registerTask('font', ['clean:font', 'webfont']);
 };

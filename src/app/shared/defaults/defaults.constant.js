@@ -4,5 +4,5 @@ angular.module('brewItYourself').constant('BREWING', {
   waterRetentionRate       : 100, // water retention in the grain in percent
   mashingWaterRate         : 300, // rate to compute recommended volume of water for mashing
   residualGravity          : 1.015, // residual gravity after fermentation (used in the alcohol estimation)
-  boilingLostRate          : 10
+  boilingLostRate          : 3
 });

@@ -31,7 +31,7 @@ angular.module('brewItYourself').service('Step', function(Ingredient) {
       var property = stepData[key];
       switch (key) {
         case 'ingredients':
-          self.ingredient = property.map(function(ingredientData) {
+          self.ingredients = property.map(function(ingredientData) {
             return new Ingredient(ingredientData);
           });
           break;

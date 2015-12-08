@@ -126,6 +126,7 @@ angular.module('brewItYourself').service('Recipe', function(Step, Ingredient, Un
    * @returns {Object} array of hops ({mass, alpha, lasting}); mass are in grams, lastings are in minutes
    */
   Recipe.prototype.getHops = function() {
+    var self = this;
     var hops = this.getIngredients({
       type: 'hop'
     });
@@ -136,9 +137,9 @@ angular.module('brewItYourself').service('Recipe', function(Step, Ingredient, Un
         var qty = hop.qty;
         if (qty) {
           result.push({
-            mass: unitsConversion.fromTo(qty.value, qty.unit.type, 'g'),
+            mass: UnitsConversion.fromTo(qty.value, qty.unit.type, 'g'),
             alpha: hop.alpha,
-            lasting: this.getTime(hop.step, lastHoppingStep)
+            lasting: self.getTime(hop.step, lastHoppingStep)
           });
         }
       });
@@ -161,8 +162,8 @@ angular.module('brewItYourself').service('Recipe', function(Step, Ingredient, Un
       type: 'water'
     });
     return [0].concat(water).reduce(function(total, next) {
-      var qty = water[index].qty;
-      return total + qty ? UnitsConversion.fromTo(qty.value, qty.unit.type, 'l') : 0;
+      var qty = next.qty;
+      return total + (qty ? UnitsConversion.fromTo(qty.value, qty.unit.type, 'l') : 0);
     });
   };
 
@@ -206,6 +207,49 @@ angular.module('brewItYourself').service('Recipe', function(Step, Ingredient, Un
   };
 
 
+    /**
+     * @ngdoc method
+     * @name liquidRetention
+     * @methodOf brewItYourself.Recipe
+     * @module brewItYourself
+     * @description
+     * Compute the liquid retention in the grain
+     * @returns {Float} volume, in liter of the liquid in the grain (lost)
+     */
+    Recipe.prototype.liquidRetention = function() {
+      var grain = this.getFermentableMass();
+      var grainMass = [0].concat(this.getFermentableMass()).reduce(function(total, next) {
+        return total + next.mass;
+      });
+      return grainMass * BREWING.waterRetentionRate / 100;
+    };
+
+    /**
+     * @ngdoc method
+     * @name boilingLiquidLost
+     * @methodOf brewItYourself.Recipe
+     * @module brewItYourself
+     * @description
+     * Compute the liquid volume lost during boiling
+     * @returns {Float} lost volume, in liter of the liquid
+     */
+    Recipe.prototype.boilingLiquidLost = function() {
+      return (this.getLiquidVolume() - this.liquidRetention()) * (BREWING.boilingLostRate) / 100;
+    };
+
+    /**
+     * @ngdoc method
+     * @name remainingLiquid
+     * @methodOf brewItYourself.Recipe
+     * @module brewItYourself
+     * @description
+     * Compute the liquid volume at the end of the process
+     * @returns {Float} final volume, in liter of the liquid
+     */
+    Recipe.prototype.remainingLiquid = function() {
+      return this.getLiquidVolume() - this.liquidRetention() - this.boilingLiquidLost();
+    };
+
   /**
    * @ngdoc method
    * @name estimateColor
@@ -216,37 +260,7 @@ angular.module('brewItYourself').service('Recipe', function(Step, Ingredient, Un
    * @returns {Object} color of the beer ({srm, rgb})
    */
   Recipe.prototype.estimateColor = function() {
-    return BeerColor.estimateColor(this.getLiquidVolume(), this.getFermentableMass());
-  };
-
-  /**
-   * @ngdoc method
-   * @name liquidRetention
-   * @methodOf brewItYourself.Recipe
-   * @module brewItYourself
-   * @description
-   * Compute the liquid retention in the grain
-   * @returns {Float} volume, in liter of the liquid in the grain (lost)
-   */
-  Recipe.prototype.liquidRetention = function() {
-    var grain = this.getFermentableMass();
-    var grainMass = [0].concat(this.getFermentableMass()).reduce(function(total, next) {
-      return total + next.mass;
-    });
-    return grainMass * BREWING.waterRetentionRate / 100;
-  };
-
-  /**
-   * @ngdoc method
-   * @name boilingLiquidLost
-   * @methodOf brewItYourself.Recipe
-   * @module brewItYourself
-   * @description
-   * Compute the liquid volume at the end of the process
-   * @returns {Float} final volume, in liter of the liquid
-   */
-  Recipe.prototype.boilingLiquidLost = function() {
-    return (this.getLiquidVolume() - this.liquidRetention()) * (BREWING.boilingLostRate) / 100;
+    return BeerColor.estimateColor(this.remainingLiquid(), this.getFermentableMass());
   };
 
   /**
@@ -294,7 +308,7 @@ angular.module('brewItYourself').service('Recipe', function(Step, Ingredient, Un
       return 1.0;
     }
     var gPerLiter = 1000 * sugarMass / liquidVol;
-    return unitsConversion.fromTo(gPerLiter, 'sugar.gPerLiter', 'sg');
+    return UnitsConversion.fromTo(gPerLiter, 'sugar.gPerLiter', 'sg');
   };
 
   /**
@@ -311,12 +325,18 @@ angular.module('brewItYourself').service('Recipe', function(Step, Ingredient, Un
     var alphaAcidity;
     var hops = this.getHops();
     var gravity = this.gravity();
-    var volume = this.getLiquidVolume();
-    hops.forEach(function(hop) {
-      hop.gravitySg = gravity;
-      volumeL = volume;
-    });
-    return Ibu.compute(BREWING.ibuComputeCurrentMethod, hops);
+    var volume = this.remainingLiquid();
+    return Ibu.compute(BREWING.ibuComputeCurrentMethod,
+      hops.map(function(hop) {
+        return {
+          gravitySg: gravity,
+          volumeL: volume,
+          alphaAcidity: hop.alpha,
+          lastingMin: hop.lasting,
+          massGr: hop.mass
+        };
+      })
+    );
   };
 
   /**
@@ -330,7 +350,7 @@ angular.module('brewItYourself').service('Recipe', function(Step, Ingredient, Un
    */
   Recipe.prototype.getAlcohol = function() {
     var initialGravity = this.gravity();
-    return (initialGravity > BREWING.residualGravity ? unitsConversionProvider.fromTo(1 + initialGravity - BREWING.residualGravity, 'sugar.sg', 'alcohol') : 0);
+    return (initialGravity > BREWING.residualGravity) ? UnitsConversion.fromTo(1 + initialGravity - BREWING.residualGravity, 'sugar.sg', 'alcohol') : 0;
   };
 
   return Recipe;

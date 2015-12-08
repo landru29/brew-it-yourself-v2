@@ -1,0 +1,40 @@
+{
+  "fermentable": {
+    "name": "Pilsner",
+    "type": "fermentable",
+    "yield": "81",
+    "color": "2",
+    "recommendMash": "true",
+    "qty": {
+      "value": 6,
+      "unit": {
+        "name": "Kg",
+        "type": "mass.kg"
+      }
+    }
+  },
+  "water": {
+    "name": "Tap water",
+    "type": "water",
+    "qty": {
+      "value": 20,
+      "unit": {
+        "name": "L",
+        "type": "volume.l"
+      }
+    }
+  },
+  "hop": {
+    "name": "Pearle ",
+    "alpha": "7.2",
+    "form": "Leaf",
+    "type": "hop",
+    "qty": {
+      "value": 40,
+      "unit": {
+        "name": "g",
+        "type": "mass.g"
+      }
+    }
+  }
+}

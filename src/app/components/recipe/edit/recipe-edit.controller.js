@@ -1,4 +1,4 @@
-angular.module('brewItYourself').controller('RecipeEditCtrl', function(Loader, BeerSugar) {
+angular.module('brewItYourself').controller('RecipeEditCtrl', function(Loader, Recipe) {
     'use strict';
     var self = this;
 
@@ -10,7 +10,7 @@ angular.module('brewItYourself').controller('RecipeEditCtrl', function(Loader, B
         self.recipe = {};
         Loader.file().load('sample.json').then(
             function (recipe) {
-                self.recipe = recipe;
+                self.recipe = new Recipe(recipe);
             },
             function(err) {
                 console.log('ERR', err);
