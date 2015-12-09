@@ -1,3 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <translations>
+    <translation id="recipe_name">Name</translation>
+    <translation id="recipe_brewer">Brewer</translation>
+  	<translation id="recipe_date">Date</translation>
+    <translation id="recipe_mashing_volume">Mashing volume</translation>
+  	<translation id="recipe_rincing_volume">Rincing volume</translation>
+  	<translation id="recipe_final_volume">Final volume</translation>
+  	<translation id="recipe_initial_gravity">Initial gravity</translation>
+  	<translation id="recipe_ibu">IBU</translation>
+  	<translation id="recipe_alcohol">Alcohol</translation>
+  	<translation id="recipe_color">Color (srm)</translation>
 </translations>

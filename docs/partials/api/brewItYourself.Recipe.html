@@ -13,8 +13,8 @@
 </div></td></tr></tbody></table></div>
 </li>
 <li><a href="/src/app/shared/recipe/recipe.service.js#236" class="view-source icon-eye-open"> </a><h3 id="methods_boilingliquidlost">boilingLiquidLost()</h3>
-<div class="boilingliquidlost"><div class="boilingliquidlost-page"><p>Compute the liquid volume at the end of the process</p>
-</div><h5 id="methods_boilingliquidlost_returns">Returns</h5><table class="variables-matrix"><tr><td><a href="" class="label type-hint type-hint-float">Float</a></td><td><div class="boilingliquidlost-page"><p>final volume, in liter of the liquid</p>
+<div class="boilingliquidlost"><div class="boilingliquidlost-page"><p>Compute the liquid volume lost during boiling</p>
+</div><h5 id="methods_boilingliquidlost_returns">Returns</h5><table class="variables-matrix"><tr><td><a href="" class="label type-hint type-hint-float">Float</a></td><td><div class="boilingliquidlost-page"><p>lost volume, in liter of the liquid</p>
 </div></td></tr></table></div>
 </li>
 <li><a href="/src/app/shared/recipe/recipe.service.js#203" class="view-source icon-eye-open"> </a><h3 id="methods_clone">clone()</h3>
@@ -22,12 +22,12 @@
 </div><h5 id="methods_clone_returns">Returns</h5><table class="variables-matrix"><tr><td><a href="" class="label type-hint type-hint-recipe">Recipe</a></td><td><div class="clone-page"><p>cloned recipe</p>
 </div></td></tr></table></div>
 </li>
-<li><a href="/src/app/shared/recipe/recipe.service.js#249" class="view-source icon-eye-open"> </a><h3 id="methods_estimatecolor">estimateColor()</h3>
+<li><a href="/src/app/shared/recipe/recipe.service.js#262" class="view-source icon-eye-open"> </a><h3 id="methods_estimatecolor">estimateColor()</h3>
 <div class="estimatecolor"><div class="estimatecolor-page"><p>Estimate the color of the beer</p>
 </div><h5 id="methods_estimatecolor_returns">Returns</h5><table class="variables-matrix"><tr><td><a href="" class="label type-hint type-hint-object">Object</a></td><td><div class="estimatecolor-page"><p>color of the beer ({srm, rgb})</p>
 </div></td></tr></table></div>
 </li>
-<li><a href="/src/app/shared/recipe/recipe.service.js#332" class="view-source icon-eye-open"> </a><h3 id="methods_getalcohol">getAlcohol()</h3>
+<li><a href="/src/app/shared/recipe/recipe.service.js#364" class="view-source icon-eye-open"> </a><h3 id="methods_getalcohol">getAlcohol()</h3>
 <div class="getalcohol"><div class="getalcohol-page"><p>Estimate the alcohol in the beer (based on the residual gravity specified in the properties</p>
 </div><h5 id="methods_getalcohol_returns">Returns</h5><table class="variables-matrix"><tr><td><a href="" class="label type-hint type-hint-float">Float</a></td><td><div class="getalcohol-page"><p>alcohol rate per volume (ie. returning 0.052 means 5.2%Vol)</p>
 </div></td></tr></table></div>
@@ -60,12 +60,12 @@
 </div></td></tr></tbody></table><h5 id="methods_gettime_returns">Returns</h5><table class="variables-matrix"><tr><td><a href="" class="label type-hint type-hint-float">Float</a></td><td><div class="gettime-page"><p>time in minutes</p>
 </div></td></tr></table></div>
 </li>
-<li><a href="/src/app/shared/recipe/recipe.service.js#291" class="view-source icon-eye-open"> </a><h3 id="methods_gravity">gravity()</h3>
+<li><a href="/src/app/shared/recipe/recipe.service.js#317" class="view-source icon-eye-open"> </a><h3 id="methods_gravity">gravity()</h3>
 <div class="gravity"><div class="gravity-page"><p>Estimate the gravity before fermentation</p>
 </div><h5 id="methods_gravity_returns">Returns</h5><table class="variables-matrix"><tr><td><a href="" class="label type-hint type-hint-float">Float</a></td><td><div class="gravity-page"><p>gravity in sg</p>
 </div></td></tr></table></div>
 </li>
-<li><a href="/src/app/shared/recipe/recipe.service.js#310" class="view-source icon-eye-open"> </a><h3 id="methods_ibuestimation">ibuEstimation()</h3>
+<li><a href="/src/app/shared/recipe/recipe.service.js#336" class="view-source icon-eye-open"> </a><h3 id="methods_ibuestimation">ibuEstimation()</h3>
 <div class="ibuestimation"><div class="ibuestimation-page"><p>Compute the IBU of the beer</p>
 </div><h5 id="methods_ibuestimation_returns">Returns</h5><table class="variables-matrix"><tr><td><a href="" class="label type-hint type-hint-float">Float</a></td><td><div class="ibuestimation-page"><p>IBU</p>
 </div></td></tr></table></div>
@@ -75,9 +75,19 @@
 </div><h5 id="methods_liquidretention_returns">Returns</h5><table class="variables-matrix"><tr><td><a href="" class="label type-hint type-hint-float">Float</a></td><td><div class="liquidretention-page"><p>volume, in liter of the liquid in the grain (lost)</p>
 </div></td></tr></table></div>
 </li>
-<li><a href="/src/app/shared/recipe/recipe.service.js#262" class="view-source icon-eye-open"> </a><h3 id="methods_mashingvolume">mashingVolume()</h3>
+<li><a href="/src/app/shared/recipe/recipe.service.js#275" class="view-source icon-eye-open"> </a><h3 id="methods_mashingvolume">mashingVolume()</h3>
 <div class="mashingvolume"><div class="mashingvolume-page"><p>Compute the recommended volume of water for mashing</p>
 </div><h5 id="methods_mashingvolume_returns">Returns</h5><table class="variables-matrix"><tr><td><a href="" class="label type-hint type-hint-float">Float</a></td><td><div class="mashingvolume-page"><p>volume of water in liter</p>
+</div></td></tr></table></div>
+</li>
+<li><a href="/src/app/shared/recipe/recipe.service.js#249" class="view-source icon-eye-open"> </a><h3 id="methods_remainingliquid">remainingLiquid()</h3>
+<div class="remainingliquid"><div class="remainingliquid-page"><p>Compute the liquid volume at the end of the process</p>
+</div><h5 id="methods_remainingliquid_returns">Returns</h5><table class="variables-matrix"><tr><td><a href="" class="label type-hint type-hint-float">Float</a></td><td><div class="remainingliquid-page"><p>final volume, in liter of the liquid</p>
+</div></td></tr></table></div>
+</li>
+<li><a href="/src/app/shared/recipe/recipe.service.js#291" class="view-source icon-eye-open"> </a><h3 id="methods_rincingvolume">rincingVolume()</h3>
+<div class="rincingvolume"><div class="rincingvolume-page"><p>Compute the recommended volume of water for rincing</p>
+</div><h5 id="methods_rincingvolume_returns">Returns</h5><table class="variables-matrix"><tr><td><a href="" class="label type-hint type-hint-float">Float</a></td><td><div class="rincingvolume-page"><p>volume of water in liter</p>
 </div></td></tr></table></div>
 </li>
 <li><a href="/src/app/shared/recipe/recipe.service.js#179" class="view-source icon-eye-open"> </a><h3 id="methods_stringify">stringify()</h3>
@@ -85,7 +95,7 @@
 </div><h5 id="methods_stringify_returns">Returns</h5><table class="variables-matrix"><tr><td><a href="" class="label type-hint type-hint-string">String</a></td><td><div class="stringify-page"><p>JSON representation of the object. all fields which name begin with &#39; will be ignored</p>
 </div></td></tr></table></div>
 </li>
-<li><a href="/src/app/shared/recipe/recipe.service.js#278" class="view-source icon-eye-open"> </a><h3 id="methods_sugarmassestimation">sugarMassEstimation()</h3>
+<li><a href="/src/app/shared/recipe/recipe.service.js#304" class="view-source icon-eye-open"> </a><h3 id="methods_sugarmassestimation">sugarMassEstimation()</h3>
 <div class="sugarmassestimation"><div class="sugarmassestimation-page"><p>Estimate the mass of sugar extracted from the malts</p>
 </div><h5 id="methods_sugarmassestimation_returns">Returns</h5><table class="variables-matrix"><tr><td><a href="" class="label type-hint type-hint-float">Float</a></td><td><div class="sugarmassestimation-page"><p>mass of sugar in kg</p>
 </div></td></tr></table></div>

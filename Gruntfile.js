@@ -136,7 +136,7 @@ module.exports = function (grunt) {
                 ignorePath: /\.\.\//
             },
             style: {
-                src: ['<%= project.app%>/app.less']
+                src: ['<%= project.app%>/constants.less']
             },
         },
 

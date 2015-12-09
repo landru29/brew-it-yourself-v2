@@ -1,21 +1,19 @@
-// bower:less
-@import "../../bower_components/font-awesome/less/font-awesome.less";
-@import "../../bower_components/bootstrap/less/bootstrap.less";
-// endbower
-
 @import "constants.less";
 
 body {
     background-color: @application-bg;
-    
+    color: @normalColor;
+
     h1 {
-        margin-bottom: 50px;
-        font-family: sans-serif;
-        font-weight: bold;
-        &:before {
-            content: "\f219";
-            font: normal normal normal 32px FontAwesome;
-            color: blue;
-        }
+      color: @titleColor;
+      margin-bottom: 50px;
+      font-family: sans-serif;
+      font-weight: bold;
+    }
+
+    h2 {
+      margin-bottom: 1em;
+      border-bottom: solid 2px @lager-color;
+      color: @titleColor;
     }
 }

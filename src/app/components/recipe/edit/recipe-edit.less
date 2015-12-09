@@ -21,8 +21,28 @@
         color: blue;
       }
     }
-    h2 {
-      margin-bottom: 1em;
-      border-bottom: solid 2px @lager-color
+    span.color-sample {
+      display: inline-block;
+      height: 1em;
+      width: 1em;
+      vertical-align: middle;
     }
+}
+
+.beer-form {
+  div.title {
+    font-weight: bold;
+    text-align: right;
+    &::after {
+      content: " : ";
+    }
+  }
+  div.value {
+    text-align: left;
+  }
+  @media (max-width: @screen-md-min) {
+    div.title {
+      text-align: left;
+    }
+  }
 }

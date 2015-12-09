@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <translations>
-	<translation id="recipe_edit_title">Editer la recette</translation>
+	<translation id="recipe_edit_title">Editer</translation>
     <translation id="recipe_edit_lasting">Durée</translation>
     <translation id="recipe_edit_temperature">Température</translation>
     <translation id="recipe_edit_ingredients">Ingrédients</translation>
 
 		<translation id="recipe_edit_steps">Étapes</translation>
 		<translation id="recipe_edit_characteristics">Caractéristiques</translation>
+		<translation id="recipe_edit_general">Général</translation>
 </translations>

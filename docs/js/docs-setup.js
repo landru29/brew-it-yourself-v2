@@ -19,7 +19,7 @@ NG_DOCS={
       "type": "service",
       "moduleName": "brewItYourself",
       "shortDescription": "Recipe model",
-      "keywords": "alcohol alpha api array beer boilingliquidlost brewityourself clone cloned color compute convert data descriptions estimate estimatecolor extracted fermentable fermentables fermentation fields filter final getalcohol getfermentablemass gethops getingredients getliquidvolume gettime grain grams gravity hops ibu ibuestimation ignored informations ingredients json lasting lastings liquid liquidretention liter malts mashing mashingvolume mass method minutes model object overloaded preload process properties rate recipe recommended representation required residual retention return returning rgb service sg starting step stepend steps stepstart string stringify sugar sugarmassestimation time volume water yield"
+      "keywords": "alcohol alpha api array beer boiling boilingliquidlost brewityourself clone cloned color compute convert data descriptions estimate estimatecolor extracted fermentable fermentables fermentation fields filter final getalcohol getfermentablemass gethops getingredients getliquidvolume gettime grain grams gravity hops ibu ibuestimation ignored informations ingredients json lasting lastings liquid liquidretention liter lost malts mashing mashingvolume mass method minutes model object overloaded preload process properties rate recipe recommended remainingliquid representation required residual retention return returning rgb rincing rincingvolume service sg starting step stepend steps stepstart string stringify sugar sugarmassestimation time volume water yield"
     },
     {
       "section": "api",

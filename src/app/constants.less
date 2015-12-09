@@ -1,5 +1,7 @@
-@application-bg:               #E0E6F8;
-@lager-color:                  #F4BC14;
+@application-bg              : #FFFFFF;
+@lager-color                 : #F4BC14;
+@titleColor                  : darken(@lager-color, 35%);
+@normalColor                 : #444444;
 
 .border-radius(@topright: 0, @bottomright: 0, @bottomleft: 0, @topleft: 0) {
   -webkit-border-top-right-radius: @topright;
@@ -15,3 +17,8 @@
   border-bottom-left-radius: @bottomleft;
   border-top-left-radius: @topleft;
 }
+
+// bower:less
+@import "../../bower_components/font-awesome/less/font-awesome.less";
+@import "../../bower_components/bootstrap/less/bootstrap.less";
+// endbower

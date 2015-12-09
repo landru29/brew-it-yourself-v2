@@ -7,7 +7,8 @@ angular.module('brewItYourself').config(
         controllerAs: 'RecipeEdit',
         templateUrl: 'app/components/recipe/edit/recipe-edit.view.html',
         translations: [
-            'components/recipe/edit'
+            'components/recipe/edit',
+						'components/recipe'
         ]
     });
 	}

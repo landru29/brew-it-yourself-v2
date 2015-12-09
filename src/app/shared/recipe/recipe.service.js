@@ -281,6 +281,19 @@ angular.module('brewItYourself').service('Recipe', function(Step, Ingredient, Un
 
   /**
    * @ngdoc method
+   * @name rincingVolume
+   * @methodOf brewItYourself.Recipe
+   * @module brewItYourself
+   * @description
+   * Compute the recommended volume of water for rincing
+   * @returns {Float} volume of water in liter
+   */
+  Recipe.prototype.rincingVolume = function() {
+    return this.getLiquidVolume() - this.mashingVolume();
+  };
+
+  /**
+   * @ngdoc method
    * @name sugarMassEstimation
    * @methodOf brewItYourself.Recipe
    * @module brewItYourself
