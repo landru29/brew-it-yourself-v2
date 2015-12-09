@@ -1,4 +1,4 @@
-Template
+Brew It Yourself V2
 ----------
 
 ##Prerequisite
