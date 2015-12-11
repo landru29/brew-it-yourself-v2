@@ -18,9 +18,9 @@
                   <span>{{step.name}}</span>
                   <span>
                     <span class="step-summary">
-                      <span data-ng-bind="{{step.lasting}}"></span>
+                      <span data-ng-bind="step.lasting"></span>
                       <i class="fa fa-clock-o"></i> -
-                      <span data-ng-bind="{{step.temperature}}"></span>
+                      <span data-ng-bind="step.temperature"></span>
                       <i class="beer-icon beer-thermometer"></i>
                     </span>
                   </span>
@@ -39,14 +39,14 @@
           <div class="col-md-6 col-xs-12 title" data-translate="recipe_name">
           </div>
           <div class="col-md-6 col-xs-12 value">
-            <span data-ng-bind="RecipeEdit.recipe.name"></span>
+            <editor-string data-model="RecipeEdit.recipe.name"></editor-string>
           </div>
         </div>
         <div class="row beer-form">
           <div class="col-md-6 col-xs-12 title" data-translate="recipe_brewer">
           </div>
           <div class="col-md-6 col-xs-12 value">
-            <span data-ng-bind="RecipeEdit.recipe.author"></span>
+            <editor-string data-model="RecipeEdit.recipe.author"></editor-string>
           </div>
         </div>
         <div class="row beer-form">

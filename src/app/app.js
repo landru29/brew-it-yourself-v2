@@ -4,6 +4,7 @@ angular.module('brewItYourself', [
     'ui.bootstrap',
     'ui.router',
     'ui.sortable',
+    'ui.validate',
     'ngCookies',
     'ngStorage',
     'ngSanitize',
@@ -22,6 +23,8 @@ angular.module('brewItYourself', [
     .config(function ($translateProvider, $windowProvider) {
         'use strict';
         $translateProvider.useCookieStorage();
+
+        $translateProvider.useSanitizeValueStrategy('sanitize');
 
         // set default and fallback languages
         $translateProvider.preferredLanguage('fr');

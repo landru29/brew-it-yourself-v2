@@ -1,0 +1,25 @@
+<span data-ng-hide="EditorString.editing">
+  <span data-ng-bind="EditorString.model"></span>
+  <button type="button"
+          data-ng-click="EditorString.edit()"
+          class="btn btn-link btn-xs">
+    <i class="fa fa-pencil"></i>
+  </button>
+</span>
+<span data-ng-show="EditorString.editing">
+  <form class="editor-string" data-ng-submit="EditorString._accept()" name="editorstring">
+    <input name="str"
+           type="{{EditorString.type}}"
+           data-ng-model="EditorString.newString">
+    <button type="submit"
+            data-ng-disabled="!editorstring.$valid"
+            class="btn btn-success btn-xs">
+      <i class="fa fa-check"></i>
+    </button>
+    <button type="button"
+            data-ng-click="EditorString.cancel()"
+            class="btn btn-danger btn-xs">
+      <i class="fa fa-times"></i>
+    </button>
+  </form>
+</span>
