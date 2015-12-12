@@ -1,0 +1,24 @@
+<span data-ng-hide="EditorDate.editing">
+  <span>{{ EditorDate.model | date:EditorDate.format}}</span>
+  <button type="button"
+          data-ng-click="EditorDate.edit()"
+          class="btn btn-link btn-xs">
+    <i class="fa fa-pencil"></i>
+  </button>
+</span>
+<span data-ng-show="EditorDate.editing">
+  <form class="editor-string" data-ng-submit="EditorDate._accept()" name="editorstring">
+    <button type="submit"
+            class="btn btn-success btn-xs">
+      <i class="fa fa-check"></i>
+    </button>
+    <button type="button"
+            data-ng-click="EditorDate.cancel()"
+            class="btn btn-danger btn-xs">
+      <i class="fa fa-times"></i>
+    </button>
+    <uib-datepicker ng-model="EditorDate.newDate"
+                    show-weeks="true"
+                    class="well well-sm editor-date"></uib-datepicker>
+  </form>
+</span>

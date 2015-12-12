@@ -10,7 +10,10 @@
   <div>
       <label data-translate="recipe_edit_ingredients"></label>
       <ul class="ingredient-list">
-          <li data-ng-repeat="ingredient in RecipeEditStep.step.ingredients">{{ingredient.name}}</li>
+          <li data-ng-repeat="ingredient in RecipeEditStep.step.ingredients">
+            <i class="{{RecipeEditStep.icons[ingredient.type].icon}}"></i>
+            <span>{{ingredient.name}}</span>
+          </li>
       </ul>
   </div>
 </div>
