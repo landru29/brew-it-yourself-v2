@@ -1,4 +1,13 @@
 <div data-ng-controller="RecipeEditStepCtrl as RecipeEditStep">
+  <div class="pull-right">
+    <button type="button"
+            class="btn btn-link btn-xs"
+            ng-really-title="{{:: 'common_dialog_confirmation' | translate }}"
+            ng-really-message="{{ 'recipe_edit_step_remove_confirm' |translate:{name:RecipeEditStep.step.name } }}"
+            ng-really-click="RecipeEditStep.remove(RecipeEdit.recipe.steps, RecipeEditStep.step)">
+      <i class="fa fa-trash-o"></i>
+    </button>
+  </div>
   <div>
       <label data-translate="recipe_edit_lasting"></label>
       <span>{{RecipeEditStep.step.lasting}}</span>

@@ -1,6 +1,7 @@
 /*global angular,console*/
 angular.module('brewItYourself', [
     'application.config',
+    'dialogs.main',
     'ui.bootstrap',
     'ui.router',
     'ui.sortable',
@@ -41,14 +42,10 @@ angular.module('brewItYourself', [
     .run(function ($rootScope, $translatePartialLoader, $translate, $state) {
         'use strict';
         // manage route change
-
+        $translatePartialLoader.addPart('components/common');
+        $translatePartialLoader.addPart('shared');
         $translate.refresh();
         $rootScope.$on("$stateChangeStart", function (event, routeOption) {
-            /*if ((!routeOption.acl_bypass) && (!Authentication.isConnected())) {
-                event.preventDefault();
-                $state.go('user-login');
-            }*/
-            $translatePartialLoader.addPart('shared');
             if (routeOption.translations) {
                 // load translation parts
                 angular.forEach(routeOption.translations, function (part) {

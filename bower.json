@@ -12,6 +12,7 @@
     "angular-ui-validate"             : "1.2.2",
     "font-awesome"                    : "4.5.0",
     "angular-bootstrap"               : "0.14.3",
+    "angular-dialog-service"          : "5.2.1",
     "bootstrap"                       : "3.3.6",
     "angular-translate"               : "2.8.1",
     "angular-translate-storage-local" : "2.8.1",
@@ -32,6 +33,11 @@
   "resolutions": {
     "angular"                         : "1.5.0-rc.0",
     "angular-cookies"                 : "1.5.0-rc.0",
-    "angular-mocks"                   : "1.5.0-rc.0"
+    "angular-mocks"                   : "1.5.0-rc.0",
+    "angular-sanitize"                : "1.5.0-rc.0",
+    "angular-dialog-service"          : "5.2.1",
+    "bootstrap"                       : "3.3.6",
+    "angular-translate"               : "2.8.1",
+    "angular-bootstrap"               : "0.14.3"
   }
 }

@@ -6,4 +6,8 @@ angular.module('brewItYourself').controller('RecipeEditStepCtrl', function($scop
 
     this.icons = RECIPE_ICONS;
 
+    this.remove = function(steps, step) {
+      _.remove(steps, step);
+    };
+
   });

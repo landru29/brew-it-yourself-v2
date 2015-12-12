@@ -8,4 +8,5 @@
     <translation id="recipe_edit_steps"Steps</translation>
     <translation id="recipe_edit_characteristics">Charactéristics</translation>
     <translation id="recipe_edit_general">General</translation>
+		<translation id="recipe_edit_step_remove_confirm">Do you want to remove the step {{name}} ?</translation>
 </translations>
