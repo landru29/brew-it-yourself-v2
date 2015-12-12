@@ -15,7 +15,7 @@
               <uib-accordion-heading>
                 <div class="sortableHandle">
                   <span>{{$index}}</span> :
-                  <span>{{step.name}}</span>
+                  <span data-ng-bind="step.name"></span>
                   <span>
                     <span class="step-summary">
                       <span data-ng-bind="step.lasting"></span>
@@ -30,6 +30,11 @@
             </uib-accordion-group>
           </div>
         </uib-accordion>
+        <button class="btn btl-link btn-xs pull-right"
+                data-uib-tooltip="{{:: 'recipe_edit_step_add_tooltip' |translate }}"
+                data-ng-click="RecipeEdit.addStep(RecipeEdit.recipe.steps);">
+          <i class="fa fa-plus"></i>
+        </button>
       </section>
     </div>
     <div class="col-md-6 col-xs-12">

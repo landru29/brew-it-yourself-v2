@@ -1,4 +1,4 @@
-angular.module('brewItYourself').controller('RecipeEditCtrl', function(Loader, Recipe) {
+angular.module('brewItYourself').controller('RecipeEditCtrl', function(Loader, Recipe, Step) {
     'use strict';
     var self = this;
 
@@ -17,6 +17,10 @@ angular.module('brewItYourself').controller('RecipeEditCtrl', function(Loader, R
             }
         );
     }
+
+    this.addStep = function(steps) {
+      steps.push(new Step());
+    };
 
     init();
 });

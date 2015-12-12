@@ -40,7 +40,8 @@
     "karma-jasmine": "0.3.5",
     "karma-phantomjs-launcher": "0.1.4",
     "lodash": "3.10.1",
-    "matchdep": "0.3.0"
+    "matchdep": "0.3.0",
+    "node-xml-lite": "*"
   },
   "dependencies": {
     "chalk": "1.1.0"

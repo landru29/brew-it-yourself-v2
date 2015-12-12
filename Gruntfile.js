@@ -62,9 +62,10 @@ module.exports = function (grunt) {
             dev: {
                 files: ['<%= project.src%>/index.html', '<%= project.app%>/**/*.*'],
                 tasks: [
+                    'translation',
                     'jshint',
                     'less',
-                    'xml2json'
+                    //'xml2json'
                 ],
                 options: {
                     livereload: true
@@ -82,31 +83,17 @@ module.exports = function (grunt) {
         },
 
         // translation
-        xml2json: {
+        translation: {
             dev: {
                 files: [
                     {
                         expand: true,
                         flatten: false,
-                        cwd: '<%= project.src%>',
+                        cwd: "<%= project.src%>",
                         src: ['app/**/*.xml'],
                         dest: '<%= project.build%>/assets',
-                        filter: 'isFile'
-                        }
-                    ]
-            },
-            missing: {
-                files: [
-                    {
-                        expand: true,
-                        flatten: false,
-                        cwd: '<%= project.src%>',
-                        src: ['app/**/en.xml'],
-                        dest: '<%= project.build%>/assets',
                         filter: 'isFile',
-                        baseFile: [
-                            'de.json'
-                        ]
+                        extendFrom: ["en", "fr"]
                     }
                 ]
             }
@@ -389,7 +376,8 @@ module.exports = function (grunt) {
         'wiredep:style',
         'less',
         'wiredep:app',
-        'xml2json',
+        'translation',
+        //'xml2json',
         'connect',
         'watch:dev'
     ]);
@@ -402,7 +390,8 @@ module.exports = function (grunt) {
         'clean:dist',
         'ngdocs',
         'ngconstant',
-        'xml2json',
+        'translation',
+        //'xml2json',
         'copy:translations',
         'copy:index',
         'copy:fonts',

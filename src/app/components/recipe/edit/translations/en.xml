@@ -4,9 +4,16 @@
     <translation id="recipe_edit_lasting">Lasting</translation>
     <translation id="recipe_edit_temperature">Temperature</translation>
     <translation id="recipe_edit_ingredients">Ingredients</translation>
+    <translation id="recipe_edit_name">Name</translation>
 
-    <translation id="recipe_edit_steps"Steps</translation>
+    <translation id="recipe_edit_steps">Steps</translation>
     <translation id="recipe_edit_characteristics">Charactéristics</translation>
     <translation id="recipe_edit_general">General</translation>
 		<translation id="recipe_edit_step_remove_confirm">Do you want to remove the step {{name}} ?</translation>
+    <translation id="recipe_edit_ingredient_remove_confirm">Do you want to remove the ingredient {{name}} ?</translation>
+
+		<translation id="recipe_edit_step_add_tooltip">Add a step</translation>
+		<translation id="recipe_edit_step_remove_tooltip">Remove {{name}}</translation>
+		<translation id="recipe_edit_ingredient_remove_tooltip">Remove {{name}}</translation>
+		<translation id="recipe_edit_ingredient_add_tooltip">Add an ingredient</translation>
 </translations>

@@ -25,7 +25,7 @@ angular.module('brewItYourself', [
         'use strict';
         $translateProvider.useCookieStorage();
 
-        $translateProvider.useSanitizeValueStrategy('sanitize');
+        //$translateProvider.useSanitizeValueStrategy('sanitize');
 
         // set default and fallback languages
         $translateProvider.preferredLanguage('fr');
@@ -42,10 +42,11 @@ angular.module('brewItYourself', [
     .run(function ($rootScope, $translatePartialLoader, $translate, $state) {
         'use strict';
         // manage route change
-        $translatePartialLoader.addPart('components/common');
-        $translatePartialLoader.addPart('shared');
+
         $translate.refresh();
         $rootScope.$on("$stateChangeStart", function (event, routeOption) {
+            $translatePartialLoader.addPart('components/common');
+            $translatePartialLoader.addPart('shared');
             if (routeOption.translations) {
                 // load translation parts
                 angular.forEach(routeOption.translations, function (part) {

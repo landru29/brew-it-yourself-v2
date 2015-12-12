@@ -1,4 +1,50 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <translations>
   <translation id="common_dialog_confirmation">Confirmation</translation>
+
+  <!-- angular-dialog-service -->
+  <translation id="DIALOGS_ERROR">Error</translation>
+  <translation id="DIALOGS_ERROR_MSG">An unknown error has occurred.</translation>
+  <translation id="DIALOGS_CLOSE">Close</translation>
+  <translation id="DIALOGS_PLEASE_WAIT">Please Wait</translation>
+  <translation id="DIALOGS_PLEASE_WAIT_ELIPS">Please Wait...</translation>
+  <translation id="DIALOGS_PLEASE_WAIT_MSG">Waiting on operation to complete.</translation>
+  <translation id="DIALOGS_PERCENT_COMPLETE">% Complete</translation>
+  <translation id="DIALOGS_NOTIFICATION">Notification</translation>
+  <translation id="DIALOGS_NOTIFICATION_MSG">Unknown application notification.</translation>
+  <translation id="DIALOGS_CONFIRMATION">Confirmation</translation>
+  <translation id="DIALOGS_CONFIRMATION_MSG">Confirmation required.</translation>
+  <translation id="DIALOGS_OK">OK</translation>
+  <translation id="DIALOGS_YES">Yes</translation>
+  <translation id="DIALOGS_NO">No</translation>
+
+<!-- Physical units -->
+  <translation id="temperature.celcius">°C</translation>
+  <translation id="temperature.fahrenheit">°F</translation>
+  <translation id="temperature.kelvin">K</translation>
+  <translation id="color.ebc">EBC</translation>
+  <translation id="color.srm">SRM</translation>
+  <translation id="color.lovibond">Lov</translation>
+  <translation id="color.mcu">MCU</translation>
+  <translation id="color.rgb">RGB</translation>
+  <translation id="sugar.plato">°Plato</translation>
+  <translation id="sugar.brix">°Brix</translation>
+  <translation id="sugar.alcohol">%Alc</translation>
+  <translation id="sugar.sg">Sg</translation>
+  <translation id="sugar.gPerLiter">g/L</translation>
+  <translation id="mass.kg">Kg</translation>
+  <translation id="mass.g">g</translation>
+  <translation id="mass.t">T</translation>
+  <translation id="mass.mg">mg</translation>
+  <translation id="volume.l">L</translation>
+  <translation id="volume.ml">mL</translation>
+  <translation id="volume.dl">dL</translation>
+  <translation id="volume.cl">cL</translation>
+  <translation id="volume.dm3">dm3</translation>
+  <translation id="volume.m3">m3</translation>
+  <translation id="volume.cm3">cm3</translation>
+  <translation id="volume.mm3">mm3</translation>
+  <translation id="volume.gal-us">gal(us)</translation>
+  <translation id="volume.gal-en">gal(en)</translation>
+  <translation id="volume.pinte">pinte</translation>
 </translations>

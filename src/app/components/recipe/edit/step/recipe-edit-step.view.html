@@ -1,12 +1,17 @@
 <div data-ng-controller="RecipeEditStepCtrl as RecipeEditStep">
   <div class="pull-right">
     <button type="button"
+            data-uib-tooltip=" {{:: 'recipe_edit_step_remove_tooltip' | translate:{name:RecipeEditStep.step.name} }}"
             class="btn btn-link btn-xs"
             ng-really-title="{{:: 'common_dialog_confirmation' | translate }}"
             ng-really-message="{{ 'recipe_edit_step_remove_confirm' |translate:{name:RecipeEditStep.step.name } }}"
             ng-really-click="RecipeEditStep.remove(RecipeEdit.recipe.steps, RecipeEditStep.step)">
       <i class="fa fa-trash-o"></i>
     </button>
+  </div>
+  <div>
+      <label data-translate="recipe_edit_name"></label>
+      <editor-string  data-model="RecipeEditStep.step.name"></editor-string>
   </div>
   <div>
       <label data-translate="recipe_edit_lasting"></label>
@@ -21,7 +26,23 @@
       <ul class="ingredient-list">
           <li data-ng-repeat="ingredient in RecipeEditStep.step.ingredients">
             <i class="{{RecipeEditStep.icons[ingredient.type].icon}}"></i>
+            <editor-quantity model="ingredient.qty"></editor-quantity>
             <span>{{ingredient.name}}</span>
+            <button type="button"
+                    data-uib-tooltip=" {{:: 'recipe_edit_ingredient_remove_tooltip' | translate:{name:ingredient.name} }}"
+                    class="btn btn-link btn-xs"
+                    ng-really-title="{{:: 'common_dialog_confirmation' | translate }}"
+                    ng-really-message="{{ 'recipe_edit_ingredient_remove_confirm' |translate:{name:ingredient.name } }}"
+                    ng-really-click="RecipeEditStep.removeIngredient(RecipeEditStep.step.ingredients, ingredient)">
+              <i class="fa fa-trash-o"></i>
+            </button>
+          </li>
+          <li>
+            <button class="btn btl-link btn-xs"
+                    data-uib-tooltip="{{:: 'recipe_edit_ingredient_add_tooltip' |translate }}"
+                    data-ng-click="RecipeEditStep.addIngredient(RecipeEditStep.step);">
+              <i class="fa fa-plus"></i>
+            </button>
           </li>
       </ul>
   </div>

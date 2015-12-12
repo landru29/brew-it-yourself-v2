@@ -3,6 +3,7 @@
   <translation id="common_dialog_confirmation">Confirmation</translation>
 
 <!-- angular-dialog-service -->
+  <translation id="DIALOGS_ERROR">Erreur</translation>
   <translation id="DIALOGS_ERROR_MSG">Une erreur inconnue s'est produite.</translation>
   <translation id="DIALOGS_CLOSE">Fermer</translation>
   <translation id="DIALOGS_PLEASE_WAIT">Patientez svp</translation>
@@ -16,4 +17,34 @@
   <translation id="DIALOGS_OK">OK</translation>
   <translation id="DIALOGS_YES">Oui</translation>
   <translation id="DIALOGS_NO">Non</translation>
+
+<!-- Physical units -->
+  <translation id="temperature.celcius">°C</translation>
+  <translation id="temperature.fahrenheit">°F</translation>
+  <translation id="temperature.kelvin">K</translation>
+  <translation id="color.ebc">EBC</translation>
+  <translation id="color.srm">SRM</translation>
+  <translation id="color.lovibond">Lov</translation>
+  <translation id="color.mcu">MCU</translation>
+  <translation id="color.rgb">RGB</translation>
+  <translation id="sugar.plato">°Plato</translation>
+  <translation id="sugar.brix">°Brix</translation>
+  <translation id="sugar.alcohol">%Alc</translation>
+  <translation id="sugar.sg">Sg</translation>
+  <translation id="sugar.gPerLiter">g/L</translation>
+  <translation id="mass.kg">Kg</translation>
+  <translation id="mass.g">g</translation>
+  <translation id="mass.t">T</translation>
+  <translation id="mass.mg">mg</translation>
+  <translation id="volume.l">L</translation>
+  <translation id="volume.ml">mL</translation>
+  <translation id="volume.dl">dL</translation>
+  <translation id="volume.cl">cL</translation>
+  <translation id="volume.dm3">dm3</translation>
+  <translation id="volume.m3">m3</translation>
+  <translation id="volume.cm3">cm3</translation>
+  <translation id="volume.mm3">mm3</translation>
+  <translation id="volume.gal-us">gal(us)</translation>
+  <translation id="volume.gal-en">gal(en)</translation>
+  <translation id="volume.pinte">pinte</translation>
 </translations>
