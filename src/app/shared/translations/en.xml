@@ -1,3 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <translations>
+  <translation id="library_modal_title">Sélect an ingredient</translation>
+  <translation id="ok">OK</translation>
+  <translation id="cancel">Cancel</translation>
+  <translation id="error_occured">An error occured</translation>
 </translations>

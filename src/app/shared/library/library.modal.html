@@ -1,0 +1,39 @@
+<div class="modal-header">
+  <h3 class="modal-title" data-translate="library_modal_title"></h3>
+</div>
+<div class="modal-body library">
+  <spinner data-ng-show="LibraryModal.loading"></spinner>
+  <div data-ng-hide="LibraryModal.loading">
+    <uib-accordion>
+        <uib-accordion-group data-ng-repeat="group in LibraryModal.library">
+          <uib-accordion-heading>
+            <div class="sortableHandle">
+              <span>{{ ('ingredient_type_' + group.type) | translate }}</span>
+            </div>
+          </uib-accordion-heading>
+          <ul class="ingredient-group">
+            <li data-ng-repeat="ingredient in group.ingredientList">
+              <button class="btn btn-link btn-xs"
+                      type="button"
+                      data-ng-click="LibraryModal.ok(ingredient, group.unit, group.type)">
+                <span data-ng-bind="ingredient.name"></span>
+                <span data-ng-if="group.type === 'hop'">
+                  {{ ingredient.alpha }} %
+                </span>
+                <span data-ng-if="group.type === 'fermentable'">
+                  {{ ingredient.color }} EBC
+                </span>
+                <span data-ng-if="group.type === 'yeast'" data-ng-bind="ingredient.productId">
+                </span>
+              </button>
+
+            </li>
+          </ul>
+        </uib-accordion-group>
+    </uib-accordion>
+  </div>
+</div>
+<div class="modal-footer">
+  <button class="btn btn-primary" type="button" ng-click="LibraryModal.ok()" data-translate="ok"></button>
+  <button class="btn btn-warning" type="button" ng-click="LibraryModal.cancel()" data-translate="cancel"></button>
+</div>

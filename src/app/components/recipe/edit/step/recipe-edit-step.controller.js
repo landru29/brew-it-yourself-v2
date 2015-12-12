@@ -1,4 +1,5 @@
-angular.module('brewItYourself').controller('RecipeEditStepCtrl', function($scope, RECIPE_ICONS, BeerSugar, UnitsConversion) {
+angular.module('brewItYourself').controller('RecipeEditStepCtrl',
+  function($scope, RECIPE_ICONS, BeerSugar, Library, Ingredient) {
     'use strict';
     var self = this;
 
@@ -15,7 +16,9 @@ angular.module('brewItYourself').controller('RecipeEditStepCtrl', function($scop
     };
 
     this.addIngredient = function(step) {
-
+      Library.pickIngredient().then(function(data) {
+        step.ingredients.push(new Ingredient(data));
+      });
     };
 
   });
