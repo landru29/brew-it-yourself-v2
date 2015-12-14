@@ -13,6 +13,9 @@
           </uib-accordion-heading>
           <ul class="ingredient-group">
             <li data-ng-repeat="ingredient in group.ingredientList">
+              <span data-ng-if="group.type === 'fermentable'">
+                <span class="badge" style="background-color:{{ingredient._rgb}}">&nbsp;</span>
+              </span>
               <button class="btn btn-link btn-xs"
                       type="button"
                       data-ng-click="LibraryModal.ok(ingredient, group.unit, group.type)">

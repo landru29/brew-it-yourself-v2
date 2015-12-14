@@ -1,5 +1,5 @@
 angular.module('brewItYourself').controller('LibraryModalController',
-  function(LibraryResource, $uibModalInstance, $translate, toaster, UnitsConversion) {
+  function(LibraryResource, $uibModalInstance, $translate, $cacheFactory, toaster, UnitsConversion) {
   var self = this;
 
   this.selected = null;
@@ -18,23 +18,6 @@ angular.module('brewItYourself').controller('LibraryModalController',
     $uibModalInstance.dismiss('cancel');
   };
 
-  function getUnit(id) {
-    var allUnits = UnitsConversion.getPhysicalUnits();
-    var matcher = id.match(/(([\w-]*)\.)?(.*)/);
-    if (matcher) {
-      var family = _.find(allUnits, {type:matcher[2]});
-      if (family) {
-        var unit = _.find(family.units, {id:id});
-        if (unit) {
-          unit.type = unit.id;
-          delete unit.id;
-        }
-        return unit;
-      }
-    }
-    return null;
-  }
-
   function reformatLib(data) {
     var thisLibrary = [];
     _.forEach(data, function(ingredientList, type) {
@@ -42,7 +25,7 @@ angular.module('brewItYourself').controller('LibraryModalController',
         var unit;
         switch (type) {
           case 'fermentable':
-            unit=getUnit('mass.kg');
+            unit=UnitsConversion.getPhysicalUnits('mass.kg');
             ingredientList.sort(function(a, b) {
               var _a = parseFloat('' + a.color);
               var _b = parseFloat('' + b.color);
@@ -50,9 +33,12 @@ angular.module('brewItYourself').controller('LibraryModalController',
               if (_a<_b) return -1;
               return 0;
             });
+            ingredientList.forEach(function(ingredient) {
+              ingredient._rgb =  UnitsConversion.fromTo(parseFloat(ingredient.color), 'color.ebc', 'color.rgb');
+            });
             break;
           case 'water':
-            unit=getUnit('volume.l');
+            unit=UnitsConversion.getPhysicalUnits('volume.l');
             break;
           case 'hop':
             ingredientList.sort(function(a, b) {
@@ -62,10 +48,10 @@ angular.module('brewItYourself').controller('LibraryModalController',
               if (_a<_b) return -1;
               return 0;
             });
-            unit = getUnit('mass.g');
+            unit = UnitsConversion.getPhysicalUnits('mass.g');
             break;
           default:
-          unit = getUnit('mass.g');
+          unit = UnitsConversion.getPhysicalUnits('mass.g');
         }
         thisLibrary.push({
           unit: unit,
@@ -78,17 +64,19 @@ angular.module('brewItYourself').controller('LibraryModalController',
   }
 
   function init() {
-    var allUnits = UnitsConversion.getPhysicalUnits();
-    self.library = [];
-    self.loading = true;
-    LibraryResource.get().$promise.then(function(data){
-      self.library = reformatLib(data);
-    }, function(err) {
-      toaster.pop('error', $translate.instant('error_occured'), JSON.stringify(err));
-      console.log(err);
-    }).finally(function() {
-      self.loading = false;
-    });
+    var cache = $cacheFactory.get('libraryCache') ? $cacheFactory.get('libraryCache') : $cacheFactory('libraryCache');
+    self.library = cache.get('data');
+    if (!self.library) {
+      self.loading = true;
+      LibraryResource.get().$promise.then(function(data){
+        self.library = reformatLib(data);
+        cache.put('data', self.library);
+      }, function(err) {
+        toaster.pop('error', $translate.instant('error_occured'), JSON.stringify(err));
+      }).finally(function() {
+        self.loading = false;
+      });
+    }
   }
 
   init();
