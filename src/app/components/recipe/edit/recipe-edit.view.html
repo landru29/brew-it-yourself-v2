@@ -4,6 +4,9 @@
       <i class="beer-icon beer-beer-glass"></i>
       <span data-translate="recipe_edit_title"></span> -
       <span>{{RecipeEdit.recipe.name | stringLimit:30:'middle'}}</span>
+      <a data-ui-sref="recipe-print({id:RecipeEdit.recipeId})" class="btn">
+        <i class="fa fa-print"></i>
+      </a>
     </h1>
   </header>
   <div class="row">

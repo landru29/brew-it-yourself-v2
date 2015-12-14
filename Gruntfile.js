@@ -77,7 +77,7 @@ module.exports = function (grunt) {
             dist: {
                 options: {},
                 files: {
-                    '<%= project.build%>/main.css': ['<%= project.app%>/**/*.less']
+                    '<%= project.build%>/styles/main.css': ['<%= project.app%>/**/*.less']
                 }
             }
         },
@@ -255,6 +255,14 @@ module.exports = function (grunt) {
                         src: ['assets/**/*'],
                         dest: '<%= project.dist%>/',
                         filter: 'isFile'
+                    },
+                    {
+                        expand: true,
+                        flatten: false,
+                        cwd: '<%= project.src%>',
+                        src: ['assets/**/*'],
+                        dest: '<%= project.build%>/',
+                        filter: 'isFile'
                     }
                 ]
             },
@@ -287,9 +295,9 @@ module.exports = function (grunt) {
                     {
                         expand: true,
                         flatten: true,
-                        cwd: '<%= project.beerFont%>',
+                        cwd: '<%= project.beerFont%>/build',
                         src: ['icons.css'],
-                        dest: '<%= project.build%>/',
+                        dest: '<%= project.build%>/styles',
                         filter: 'isFile'
                     }
                 ]
@@ -353,8 +361,8 @@ module.exports = function (grunt) {
         webfont: {
           "beer-icons": {
               src: 'icons/*.svg',
-              dest: '<%= project.beerFont%>/fonts',
-              destCss: '<%= project.beerFont%>',
+              dest: '<%= project.beerFont%>/build/../fonts',
+              destCss: '<%= project.beerFont%>/build/',
               options: {
                 fontFilename: 'beer-{hash}',
                 templateOptions: {
@@ -371,13 +379,13 @@ module.exports = function (grunt) {
     grunt.registerTask('serve', [
         'clean:dev',
         'copy:fonts',
+        'copy:assets',
         'concat:moment',
         'ngconstant',
         'wiredep:style',
         'less',
         'wiredep:app',
         'translation',
-        //'xml2json',
         'connect',
         'watch:dev'
     ]);
@@ -391,10 +399,10 @@ module.exports = function (grunt) {
         'ngdocs',
         'ngconstant',
         'translation',
-        //'xml2json',
         'copy:translations',
         'copy:index',
         'copy:fonts',
+        'copy:assets',
         'concat:moment',
         'copy:conf',
         'copy:dist',

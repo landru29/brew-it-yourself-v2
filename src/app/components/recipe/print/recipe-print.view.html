@@ -1,5 +1,10 @@
 <div class="print">
-    <h1>{{RecipePrint.recipe.name}}</h1>
+    <h1>
+      {{RecipePrint.recipe.name}}
+      <a data-ui-sref="recipe-edit({id:RecipePrint.recipeId})" class="btn">
+        <i class="fa fa-pencil"></i>
+      </a>
+    </h1>
     <span class="author">{{RecipePrint.recipe.author}}</span>
     <span class="date">- {{RecipePrint.recipe.date | date : "dd/MM/yyyy" }} -</span>
     <div class="recipe">

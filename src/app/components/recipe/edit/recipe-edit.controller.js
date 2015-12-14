@@ -1,4 +1,4 @@
-angular.module('brewItYourself').controller('RecipeEditCtrl', function(Loader, Recipe, Step) {
+angular.module('brewItYourself').controller('RecipeEditCtrl', function($stateParams, Loader, Recipe, Step) {
     'use strict';
     var self = this;
 
@@ -7,6 +7,7 @@ angular.module('brewItYourself').controller('RecipeEditCtrl', function(Loader, R
     };
 
     function init() {
+        self.recipeId = $stateParams.id;
         self.recipe = {};
         Loader.file().load('sample.json').then(
             function (recipe) {
