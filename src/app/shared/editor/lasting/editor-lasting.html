@@ -1,0 +1,11 @@
+<span data-ng-hide="EditorLasting.editing">
+  <span data-ng-bind="EditorLasting.model"></span>
+  <button type="button"
+          data-ng-click="EditorLasting.edit();$event.stopPropagation();"
+          class="btn btn-link btn-xs">
+      <i class="fa fa-pencil"></i>
+  </button>
+</span>
+<div data-ng-show="EditorLasting.editing" class="editor-lasting">
+
+</div>

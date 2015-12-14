@@ -5,7 +5,8 @@ angular.module('brewItYourself').component('editorQuantity',
     type: '@'
   },
   controllerAs: 'EditorQuantity',
-  controller: function($scope) {
+  controller: function() {
+    'use strict';
 
     function getType(unit) {
       if (unit) {

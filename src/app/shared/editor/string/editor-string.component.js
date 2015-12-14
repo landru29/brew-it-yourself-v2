@@ -6,7 +6,8 @@ angular.module('brewItYourself').component('editorString',
     accept: "&"
   },
   controllerAs: 'EditorString',
-  controller: function($scope) {
+  controller: function() {
+    'use strict';
 
     this.type = this.type ? this.type : 'string';
 

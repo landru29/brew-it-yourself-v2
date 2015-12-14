@@ -6,7 +6,8 @@ angular.module('brewItYourself').component('editorDate',
     accept: "&"
   },
   controllerAs: 'EditorDate',
-  controller: function($scope) {
+  controller: function() {
+    'use strict';
 
     this.format = this.format ? this.format : 'dd/MM/yyyy';
 
