@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<translations>
+  <translation id="recipe_print_final_volume">Volume final</translation>
+  <translation id="recipe_print_rincing_volume">Rinçage</translation>
+  <translation id="recipe_print_mashing_volume">Empâtage</translation>
+  <translation id="recipe_print_initial_gravity">Densité initiale</translation>
+  <translation id="recipe_print_ibu">IBU</translation>
+  <translation id="recipe_print_alcohol">Alcool</translation>
+  <translation id="recipe_print_color_srm">Couleur (srm)</translation>
+</translations>

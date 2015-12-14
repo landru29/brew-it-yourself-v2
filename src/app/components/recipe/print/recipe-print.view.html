@@ -1,0 +1,82 @@
+<div class="print">
+    <h1>{{RecipePrint.recipe.name}}</h1>
+    <span class="author">{{RecipePrint.recipe.author}}</span>
+    <span class="date">- {{RecipePrint.recipe.date | date : "dd/MM/yyyy" }} -</span>
+    <div class="recipe">
+        <div class="container">
+            <ul class="features">
+                <li>
+                  <span class="water libelized">
+                    <i class="beer-icon beer-water"></i>
+                    <span data-translate="recipe_print_mashing_volume"></span>:
+                  </span>
+                  <span >{{ RecipePrint.recipe.mashingVolume() | number:1}} L</span>
+                </li>
+                <li>
+                  <span class="water libelized">
+                    <i class="beer-icon beer-water"></i>
+                    <span data-translate="recipe_print_rincing_volume"></span>:
+                  </span>
+                  <span >{{ RecipePrint.recipe.rincingVolume() | number:1}} L</span>
+                </li>
+                <li>
+                  <span class="water libelized">
+                    <i class="beer-icon beer-water"></i>
+                    <span data-translate="recipe_print_final_volume"></span>:
+                  </span>
+                  <span >{{ RecipePrint.recipe.remainingLiquid()  | number:1}} L</span>
+                </li>
+                <li>
+                  <span class="gravity libelized">
+                    <i class="beer-icon beer-misc"></i>
+                    <span data-translate="recipe_print_initial_gravity"></span>:
+                  </span>
+                  <span >{{ RecipePrint.recipe.gravity() | number:3}}</span>
+                </li>
+                <li>
+                  <span class="hops libelized">
+                    <i class="beer-icon beer-hop"></i>
+                    <span data-translate="recipe_print_ibu"></span>:
+                  </span>
+                  <span >{{ RecipePrint.recipe.ibuEstimation() | number:0}}</span>
+                </li>
+                <li>
+                  <span class="drink libelized">
+                    <i class="beer-icon beer-beer-glass"></i>
+                    <span data-translate="recipe_print_alcohol"></span>:
+                  </span>
+                  <span >{{ RecipePrint.recipe.getAlcohol() * 100 | number:1}} %Vol</span>
+                </li>
+                <li>
+                  <span class="drink libelized">
+                    <i class="beer-icon beer-beer-glass"></i>
+                    <span data-translate="recipe_print_color_srm"></span>:
+                  </span>
+                  <span class="beer-color">
+                    {{ RecipePrint.recipe.estimateColor().srm | number:1}}
+                  </span>
+                </li>
+            </ul>
+            <div class="step" ng-repeat="step in RecipePrint.recipe.steps">
+                <div class="title">
+                    <span class="name">{{$index}} - {{step.name}}</span>
+                    <span class="temperature">{{step.temperature | number:0}} °c</span>
+                    <span class="time">
+                        <i class="glyphicon glyphicon-time"></i>
+                        <span>{{ step.lasting | lasting }}</span>
+                    </span>
+                </div>
+                <ul class="ingredients">
+                    <li ng-repeat="ingredient in step.ingredients">
+                      <i class="beer-icon beer-{{ingredient.type}}"></i>
+                        <span class="quantity">
+                            <span>{{ingredient.qty.value}}</span>
+                            <span>{{ingredient.qty.unit.name}}</span>
+                        </span>
+                        <span>{{ingredient.name}}</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
