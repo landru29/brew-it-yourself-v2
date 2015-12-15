@@ -6,7 +6,7 @@ angular.module('brewItYourself').component('editorQuantity',
     accept: "&"
   },
   controllerAs: 'EditorQuantity',
-  controller: function(UnitsConversion) {
+  controller: function($scope, UnitsConversion) {
     'use strict';
 
     var self = this;
@@ -24,6 +24,13 @@ angular.module('brewItYourself').component('editorQuantity',
       self.qty.unit = self.qty.unit ? self.qty.unit : {};
       self.qty.unit.type = self.qty.unit.type ? self.qty.unit.type : self.type;
       self.units = getAllUnits(self.qty.unit);
+      self.newValue = self.qty.value;
+      self.newUnit = self.qty.unit;
+      $scope.$watch('EditorQuantity.newUnit', function(newVal, oldVal) {
+        if ((newVal) && (oldVal)) {
+          self.newValue = UnitsConversion.fromTo(self.newValue, oldVal.type, newVal.type);
+        }
+      });
     }
 
     this.getUnit = function() {
