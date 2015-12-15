@@ -1,4 +1,4 @@
-angular.module('brewItYourself').controller('RecipeEditCtrl', function($stateParams, Loader, Recipe, Step) {
+angular.module('brewItYourself').controller('RecipeEditCtrl', function($stateParams, Loader, Recipe, Step, toaster) {
     'use strict';
     var self = this;
 
@@ -14,7 +14,7 @@ angular.module('brewItYourself').controller('RecipeEditCtrl', function($statePar
                 self.recipe = new Recipe(recipe);
             },
             function(err) {
-                console.log('ERR', err);
+              toaster.pop('error', $translate.instant('error_occured'), JSON.stringify(err));
             }
         );
     }

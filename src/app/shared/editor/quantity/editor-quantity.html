@@ -1,2 +1,28 @@
-<span data-ng-bind="EditorQuantity.model.value"></span>
-<span>{{ EditorQuantity.getUnit() | translate }}</span>
+<button type="button"
+        class="btn btn-link btn-xs"
+        data-ng-click="EditorQuantity.edit();$event.stopPropagation();"
+        data-ng-hide="EditorQuantity.editing">
+  <span data-ng-bind="EditorQuantity.qty.value"></span>
+  <span>{{ EditorQuantity.getUnit() | translate }}</span>
+</button>
+<span data-ng-show="EditorQuantity.editing">
+  <form class="editor-quantity" data-ng-submit="EditorQuantity._accept()" name="editorquantity">
+    <input name="str"
+           class="editor-quantity"
+           type="number"
+           data-ng-model="EditorQuantity.newValue">
+     <select ng-options="item as item.name for item in EditorQuantity.units track by item.type"
+             ng-model="EditorQuantity.newUnit"></select>
+    <button type="submit"
+            data-ng-disabled="!editorquantity.$valid"
+            data-ng-click="$event.stopPropagation()"
+            class="btn btn-success btn-xs">
+      <i class="fa fa-check"></i>
+    </button>
+    <button type="button"
+            data-ng-click="EditorQuantity.cancel();$event.stopPropagation()"
+            class="btn btn-danger btn-xs">
+      <i class="fa fa-times"></i>
+    </button>
+  </form>
+</span>

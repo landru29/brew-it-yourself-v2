@@ -1,31 +1,54 @@
 angular.module('brewItYourself').component('editorQuantity',
 {
   bindings: {
-    model: '=',
-    type: '@'
+    qty: '=model',
+    type: '@',
+    accept: "&"
   },
   controllerAs: 'EditorQuantity',
-  controller: function() {
+  controller: function(UnitsConversion) {
     'use strict';
 
-    function getType(unit) {
+    var self = this;
+
+    function getAllUnits(unit) {
       if (unit) {
-        var matcher = (unit.type ? unit.type : '').match(/(([\w-]*)\.)?(.*)/);
-        if (matcher) {
-          return matcher[1];
-        }
-        return null;
+        var decoded = UnitsConversion.decodeType(unit.type);
+        return UnitsConversion.getPhysicalUnits(decoded.family + '.');
       }
       return null;
     }
 
-    this.type = this.type ? this.type : getType(this.model ? this.model.unit : null);
-
-    this.unit = this.model.unit ? this.model.unit : {};
+    function init() {
+      self.qty = self.qty ? self.qty : {};
+      self.qty.unit = self.qty.unit ? self.qty.unit : {};
+      self.qty.unit.type = self.qty.unit.type ? self.qty.unit.type : self.type;
+      self.units = getAllUnits(self.qty.unit);
+    }
 
     this.getUnit = function() {
-      return this.unit.type;
+      return self.qty.unit.type;
     };
+
+    this.edit = function() {
+      this.editing = true;
+      this.newValue = this.qty.value;
+      this.newUnit = this.qty.unit;
+    };
+
+    this.cancel = function() {
+      this.editing=false;
+    };
+
+    this._accept = function() {
+      this.editing=false;
+      this.qty.value = this.newValue;
+      this.qty.unit = this.newUnit;
+      this.accept({'$value': this.qty});
+    };
+
+    init();
+
   },
   templateUrl: 'app/shared/editor/quantity/editor-quantity.html'
 });

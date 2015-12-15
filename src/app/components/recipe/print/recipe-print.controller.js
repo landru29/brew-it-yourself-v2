@@ -11,7 +11,7 @@ angular.module('brewItYourself').controller('RecipePrintCtrl', function($statePa
                 self.recipe = new Recipe(recipe);
             },
             function(err) {
-                console.log('ERR', err);
+              toaster.pop('error', $translate.instant('error_occured'), JSON.stringify(err));
             }
         );
     }
