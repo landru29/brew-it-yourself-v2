@@ -1,6 +1,7 @@
 @import "../../../constants.less";
 
 div.editor-lasting {
+  text-align: center;
   display: inline-block;
   background: @panel-default-heading-bg;
   border: solid 1px @panel-default-border;
@@ -8,5 +9,7 @@ div.editor-lasting {
   min-width: 200px;
   position: absolute;
   .border-radius(@border-radius-base, @border-radius-base, @border-radius-base, @border-radius-base);
+  .clock {
+    cursor:pointer;
+  }
 }
-
