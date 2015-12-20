@@ -5,6 +5,10 @@
   <translation id="cancel">Annuler</translation>
   <translation id="error_occured">Une erreur est survenue</translation>
 
+  <translation id="days">Jours</translation>
+  <translation id="hours">Heures</translation>
+  <translation id="minutes">Minutes</translation>
+
   <translation id="ingredient_type_fermentable">Malt</translation>
   <translation id="ingredient_type_hop">Houblon</translation>
   <translation id="ingredient_type_misc">Divers</translation>

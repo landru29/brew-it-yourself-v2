@@ -6,7 +6,7 @@
     "steps": [
  {
             "name": "Mashing",
-            "lasting": 15,
+            "lasting": 115,
             "temperature": 45,
             "ingredients": [
                 {
@@ -66,7 +66,7 @@
         },
         {
             "name": "First step",
-            "lasting": 20,
+            "lasting": 740,
             "temperature": 68,
             "ingredients": [],
             "reduced": false
@@ -79,7 +79,7 @@
         },
         {
             "name": "Enzym",
-            "lasting": 5,
+            "lasting": 1400,
             "temperature": 77,
             "ingredients": [],
             "reduced": false
