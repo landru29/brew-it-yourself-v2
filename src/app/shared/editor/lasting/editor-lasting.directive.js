@@ -94,9 +94,8 @@ angular.module('brewItYourself').directive('editorLasting', function(){
           return time.minutes + time.hours * 60 + time.days * 60 * 24;
         }
 
-        this.hours = true;
-
         this.edit = function() {
+            this.hours = true;
             this.editing = true;
             this.newLasting = getTime(this.model);
         };

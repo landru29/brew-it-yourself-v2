@@ -22,7 +22,7 @@ angular.module('brewItYourself').service('Step', function(Ingredient) {
     var stepData = angular.extend({
         name: '',
         lasting: 0,
-        temperature: 20,
+        temperature: {value: 20, unit:{name:'°c', type:'temperature.celcius'}},
         ingredients: []
       },
       data
@@ -40,6 +40,13 @@ angular.module('brewItYourself').service('Step', function(Ingredient) {
             self.lasting = property.minutes + property.hours * 60 + property.days * 60 * 24;
           } else {
             self.lasting = property;
+          }
+          break;
+        case 'temperature':
+          if (_.isNumber(property)) {
+            self.temperature = {value: property, unit:{name:'°c', type:'temperature.celcius'}};
+          } else {
+            self.temperature = property;
           }
           break;
         default:
