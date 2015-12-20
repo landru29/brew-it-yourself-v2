@@ -1,0 +1,43 @@
+<span data-ng-hide="EditorFermentable.editing">
+  <span data-ng-bind="EditorFermentable.model.name"></span>
+  <span class="badge"
+        data-ng-bind="EditorFermentable.model.color"
+        style="background-color:{{EditorFermentable.getRgb(EditorFermentable.model.color)}}">
+  </span>
+  <button type="button"
+          data-ng-click="EditorFermentable.edit();$event.stopPropagation();"
+          class="btn btn-link btn-xs">
+    <i class="fa fa-pencil"></i>
+  </button>
+</span>
+<span data-ng-show="EditorFermentable.editing">
+  <form class="editor-fermentable" data-ng-submit="EditorFermentable._accept()" name="editorfermentable">
+    <input name="name"
+           class="name"
+           data-tooltip="{{:: 'name' | translate}}"
+           type="string"
+           data-ng-model="EditorFermentable.editingModel.name">
+   <input name="ebc"
+          class="name"
+          data-tooltip="{{:: 'ebc' | translate}}"
+          type="number"
+          data-ng-model="EditorFermentable.editingModel.color">
+    <span class="badge" style="background-color:{{EditorFermentable.getRgb(EditorFermentable.editingModel.color)}}">&nbsp;</span>
+    <input name="yield"
+           class="name"
+           data-tooltip="{{:: 'yield' | translate}}"
+           type="number"
+           data-ng-model="EditorFermentable.editingModel.yield"> %
+    <button type="submit"
+            data-ng-disabled="!editorfermentable.$valid"
+            data-ng-click="$event.stopPropagation()"
+            class="btn btn-success btn-xs">
+      <i class="fa fa-check"></i>
+    </button>
+    <button type="button"
+            data-ng-click="EditorFermentable.cancel();$event.stopPropagation()"
+            class="btn btn-danger btn-xs">
+      <i class="fa fa-times"></i>
+    </button>
+  </form>
+</span>

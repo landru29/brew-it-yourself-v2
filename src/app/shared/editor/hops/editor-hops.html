@@ -1,0 +1,34 @@
+<span data-ng-hide="EditorHops.editing">
+  <span data-ng-bind="EditorHops.model.name"></span>
+  <span class="badge">{{EditorHops.model.alpha}}%</span>
+  <button type="button"
+          data-ng-click="EditorHops.edit();$event.stopPropagation();"
+          class="btn btn-link btn-xs">
+    <i class="fa fa-pencil"></i>
+  </button>
+</span>
+<span data-ng-show="EditorHops.editing">
+  <form class="editor-hops" data-ng-submit="EditorHops._accept()" name="editorhops">
+    <input name="name"
+           class="name"
+           data-tooltip="{{:: 'name' | translate}}"
+           type="string"
+           data-ng-model="EditorHops.editingModel.name">
+     <input name="acidity"
+            class="name"
+            data-tooltip="{{:: 'alpha_acidity' | translate}}"
+            type="number"
+            data-ng-model="EditorHops.editingModel.alpha">%
+    <button type="submit"
+            data-ng-disabled="!editorhops.$valid"
+            data-ng-click="$event.stopPropagation()"
+            class="btn btn-success btn-xs">
+      <i class="fa fa-check"></i>
+    </button>
+    <button type="button"
+            data-ng-click="EditorHops.cancel();$event.stopPropagation()"
+            class="btn btn-danger btn-xs">
+      <i class="fa fa-times"></i>
+    </button>
+  </form>
+</span>

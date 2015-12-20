@@ -1,0 +1,28 @@
+<span data-ng-hide="EditorWater.editing">
+  <span data-ng-bind="EditorWater.model.name"></span>
+  <button type="button"
+          data-ng-click="EditorWater.edit();$event.stopPropagation();"
+          class="btn btn-link btn-xs">
+    <i class="fa fa-pencil"></i>
+  </button>
+</span>
+<span data-ng-show="EditorWater.editing">
+  <form class="editor-string" data-ng-submit="EditorWater._accept()" name="editorwater">
+    <input name="name"
+           class="name"
+           data-tooltip="{{:: 'name' | translate}}"
+           type="string"
+           data-ng-model="EditorWater.editingModel.name">
+    <button type="submit"
+            data-ng-disabled="!editorwater.$valid"
+            data-ng-click="$event.stopPropagation()"
+            class="btn btn-success btn-xs">
+      <i class="fa fa-check"></i>
+    </button>
+    <button type="button"
+            data-ng-click="EditorWater.cancel();$event.stopPropagation()"
+            class="btn btn-danger btn-xs">
+      <i class="fa fa-times"></i>
+    </button>
+  </form>
+</span>

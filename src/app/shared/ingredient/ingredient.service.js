@@ -24,7 +24,16 @@ angular.module('brewItYourself').service('Ingredient', function() {
       data
     );
     Object.keys(ingredientData).forEach(function(key) {
-      self[key] = ingredientData[key];
+      switch (key) {
+        case 'yield':
+        case 'color':
+        case 'alpha':
+            self[key] = parseFloat(ingredientData[key]);
+            break;
+        default:
+           self[key] = ingredientData[key];
+      }
+
     });
   };
 

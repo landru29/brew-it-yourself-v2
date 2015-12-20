@@ -5,6 +5,11 @@
   <translation id="cancel">Annuler</translation>
   <translation id="error_occured">Une erreur est survenue</translation>
 
+  <translation id="name">Nom</translation>
+  <translation id="ebc">EBC</translation>
+  <translation id="yield">Rendement</translation>
+  <translation id="alpha_acidity">Acidité alpha</translation>
+
   <translation id="days">Jours</translation>
   <translation id="hours">Heures</translation>
   <translation id="minutes">Minutes</translation>

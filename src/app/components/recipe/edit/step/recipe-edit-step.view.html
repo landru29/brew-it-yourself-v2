@@ -19,15 +19,26 @@
   </div>
   <div>
       <label data-translate="recipe_edit_temperature"></label>
-      <editor-quantity model="RecipeEditStep.step.temperature"></editor-quantity>
+      <editor-quantity data-model="RecipeEditStep.step.temperature"></editor-quantity>
   </div>
   <div>
       <label data-translate="recipe_edit_ingredients"></label>
       <ul class="ingredient-list">
           <li data-ng-repeat="ingredient in RecipeEditStep.step.ingredients">
             <i class="{{RecipeEditStep.icons[ingredient.type].icon}}"></i>
-            <editor-quantity model="ingredient.qty"></editor-quantity>
-            <span>{{ingredient.name}}</span>
+            <editor-quantity data-model="ingredient.qty"></editor-quantity>
+            <editor-aroma data-ng-if="ingredient.type==='aroma'"
+                          data-model="ingredient"></editor-aroma>
+            <editor-fermentable data-ng-if="ingredient.type==='fermentable'"
+                          data-model="ingredient"></editor-fermentable>
+            <editor-hops data-ng-if="ingredient.type==='hop'"
+                          data-model="ingredient"></editor-hops>
+            <editor-misc data-ng-if="ingredient.type==='misc'"
+                          data-model="ingredient"></editor-misc>
+            <editor-water data-ng-if="ingredient.type==='water'"
+                          data-model="ingredient"></editor-water>
+            <editor-yeast data-ng-if="ingredient.type==='yeast'"
+                          data-model="ingredient"></editor-yeast>
             <button type="button"
                     data-uib-tooltip=" {{:: 'recipe_edit_ingredient_remove_tooltip' | translate:{name:ingredient.name} }}"
                     class="btn btn-link btn-xs"
