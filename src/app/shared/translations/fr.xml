@@ -8,6 +8,8 @@
   <translation id="days">Jours</translation>
   <translation id="hours">Heures</translation>
   <translation id="minutes">Minutes</translation>
+  <translation id="day_s">jour(s)</translation>
+  <translation id="minute_s">min</translation>
 
   <translation id="ingredient_type_fermentable">Malt</translation>
   <translation id="ingredient_type_hop">Houblon</translation>

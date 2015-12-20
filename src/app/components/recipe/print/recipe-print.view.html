@@ -65,7 +65,7 @@
             <div class="step" ng-repeat="step in RecipePrint.recipe.steps">
                 <div class="title">
                     <span class="name">{{$index}} - {{step.name}}</span>
-                    <span class="temperature">{{step.temperature | number:0}} °c</span>
+                    <span class="temperature">{{step.temperature.value | number:0}} °c</span>
                     <span class="time">
                         <i class="glyphicon glyphicon-time"></i>
                         <span>{{ step.lasting | lasting }}</span>

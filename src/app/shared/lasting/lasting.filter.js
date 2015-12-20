@@ -1,27 +1,38 @@
-angular.module('brewItYourself').filter('lasting', ['$filter', function ($filter) {
+angular.module('brewItYourself').filter('lasting', function ($translate) {
     'use strict';
-    return function (text, trad) {
-        if (!trad) {
-            trad = {
-                day: 'day(s)'
-            };
+    return function (text,format) {
+        var minutes = parseInt(text, 10);
+        var time = {
+          minutes: minutes % 60,
+          hours: Math.floor(minutes / 60) % 24,
+          days: Math.floor(minutes / 1440)
+        };
+
+        function leading(str, num) {
+          return (str + num).substr(-2);
         }
-        var data = parseInt(text, 10);
-        var days = Math.floor(data / (60 * 24));
-        var hours = '00' + (Math.floor((data - days * 24 * 60) / 60));
-        var minutes = '00' + (data - days * 24 * 60 - hours * 60);
+
         var result = [];
-        if (days || parseInt(hours,0) || parseInt(minutes,0)) {
-            if (days) {
-                result.push(days + ' ' + $filter('translate')(trad.day));
+        switch(format) {
+          case 'compact':
+            if (time.days) {
+                result.push([time.days, $translate.instant('day_s')].join(' '));
             }
-            if (parseInt(hours, 10) || parseInt(minutes, 10)) {
-                result.push(hours.substr(hours.length-2, 2) + ':' + minutes.substr(minutes.length-2, 2));
+            if (time.hours || time.days) {
+              result.push([leading('00', time.hours),  leading('00', time.minutes)].join(':'));
+            } else {
+              result.push([time.minutes, $translate.instant('minute_s')].join(' '));
             }
             return result.join(' - ');
-        } else {
-            result.push('00:00');
+          default:
+            if (time.days) {
+                result.push([time.days, $translate.instant('day_s')].join(' '));
+            }
+            if (time.hours || time.minutes) {
+              result.push([leading('00', time.hours),  leading('00', time.minutes)].join(':'));
+            }
+            return result.join(' - ');
         }
-        return result.join(' - ');
+
     };
-}]);
+});

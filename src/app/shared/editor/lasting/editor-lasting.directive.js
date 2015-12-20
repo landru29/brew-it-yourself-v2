@@ -82,13 +82,14 @@ angular.module('brewItYourself').directive('editorLasting', function(){
     controller: function() {
         'use strict';
 
-        function getTime(minutes) {
+        this.getTime = function(minutes) {
+          minutes = undefined === minutes ? this.model : minutes;
           return {
             minutes: minutes % 60,
             hours: Math.floor(minutes / 60) % 24,
             days: Math.floor(minutes / 1440)
           };
-        }
+        };
 
         function setTime(time) {
           return time.minutes + time.hours * 60 + time.days * 60 * 24;
@@ -97,7 +98,7 @@ angular.module('brewItYourself').directive('editorLasting', function(){
         this.edit = function() {
             this.hours = true;
             this.editing = true;
-            this.newLasting = getTime(this.model);
+            this.newLasting = this.getTime(this.model);
         };
 
         this.cancel = function() {

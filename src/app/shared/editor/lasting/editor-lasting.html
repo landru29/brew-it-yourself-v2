@@ -1,4 +1,4 @@
-<span data-ng-bind="EditorLasting.model"></span>
+<span data-ng-bind="EditorLasting.model | lasting:'compact'"></span>
 <button type="button"
         data-ng-click="EditorLasting.edit();$event.stopPropagation();"
         class="btn btn-link btn-xs">

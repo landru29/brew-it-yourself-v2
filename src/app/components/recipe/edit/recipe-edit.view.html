@@ -22,9 +22,9 @@
                   <span data-ng-bind="step.name"></span>
                   <span>
                     <span class="step-summary">
-                      <span data-ng-bind="step.lasting"></span>
+                      <span data-ng-bind="step.lasting | lasting:'compact'"></span>
                       <i class="fa fa-clock-o"></i> -
-                      <span data-ng-bind="step.temperature"></span>
+                      <span data-ng-bind="step.temperature.value"></span>
                       <i class="beer-icon beer-thermometer"></i>
                     </span>
                   </span>
