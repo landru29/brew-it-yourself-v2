@@ -5,7 +5,7 @@
  * @description
  *  Step model
  */
-angular.module('brewItYourself').service('Step', function(Ingredient) {
+angular.module('brewItYourself').service('Step', function(Ingredient, uuid) {
 
   /**
    * @ngdoc method
@@ -20,6 +20,7 @@ angular.module('brewItYourself').service('Step', function(Ingredient) {
   var Step = function(data) {
     var self = this;
     var stepData = angular.extend({
+        _uuid: uuid.new(),
         name: '',
         lasting: 0,
         temperature: {value: 20, unit:{name:'°c', type:'temperature.celcius'}},

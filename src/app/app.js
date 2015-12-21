@@ -14,7 +14,8 @@ angular.module('brewItYourself', [
     'flash',
     'angularMoment',
     'BeerToolbox',
-    'toaster'
+    'toaster',
+    'uuid'
 ])
     .config(function($urlRouterProvider, $locationProvider) {
         'use strict';

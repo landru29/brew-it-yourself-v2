@@ -5,7 +5,7 @@
  * @description
  *  Step model
  */
-angular.module('brewItYourself').service('Ingredient', function() {
+angular.module('brewItYourself').service('Ingredient', function(uuid) {
 
   /**
    * @ngdoc method
@@ -20,6 +20,7 @@ angular.module('brewItYourself').service('Ingredient', function() {
   var Ingredient = function(data) {
     var self = this;
     var ingredientData = angular.extend({
+        _uuid: uuid.new()
       },
       data
     );

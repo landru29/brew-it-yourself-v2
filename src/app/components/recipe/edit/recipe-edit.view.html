@@ -15,7 +15,7 @@
         <h2 data-translate="recipe_edit_steps"></h2>
         <uib-accordion>
           <div data-ui-sortable="RecipeEdit.sortableOptions" data-ng-model="RecipeEdit.recipe.steps">
-            <uib-accordion-group data-ng-repeat="step in RecipeEdit.recipe.steps">
+            <uib-accordion-group data-is-open="step._isOpen" data-ng-repeat="step in RecipeEdit.recipe.steps track by step._uuid">
               <uib-accordion-heading>
                 <div class="sortableHandle">
                   <span>{{$index}}</span> :

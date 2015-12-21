@@ -16,4 +16,7 @@
 		<translation id="recipe_edit_step_remove_tooltip">Supprimer {{name}}</translation>
 		<translation id="recipe_edit_ingredient_remove_tooltip">Supprimer {{name}}</translation>
 		<translation id="recipe_edit_ingredient_add_tooltip">Ajouter un ingrédient</translation>
+
+		<translation id="recipe_edit_step_move_up_tooltip">Remonter</translation>
+		<translation id="recipe_edit_step_move_down_tooltip">redescendre</translation>
 </translations>

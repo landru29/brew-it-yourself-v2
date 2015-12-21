@@ -1,6 +1,20 @@
 <div data-ng-controller="RecipeEditStepCtrl as RecipeEditStep">
   <div class="pull-right">
     <button type="button"
+            data-ng-hide="RecipeEdit.recipe.steps.indexOf(RecipeEditStep.step) === 0"
+            data-uib-tooltip=" {{:: 'recipe_edit_step_move_up_tooltip' | translate }}"
+            class="btn btn-link btn-xs"
+            ng-click="RecipeEditStep.moveUp(RecipeEdit.recipe.steps, RecipeEditStep.step)">
+      <i class="fa fa-arrow-up"></i>
+    </button>
+    <button type="button"
+            data-ng-hide="RecipeEdit.recipe.steps.indexOf(RecipeEditStep.step) === RecipeEdit.recipe.steps.length - 1"
+            data-uib-tooltip=" {{:: 'recipe_edit_step_move_down_tooltip' | translate }}"
+            class="btn btn-link btn-xs"
+            ng-click="RecipeEditStep.moveDown(RecipeEdit.recipe.steps, RecipeEditStep.step)">
+      <i class="fa fa-arrow-down"></i>
+    </button>
+    <button type="button"
             data-uib-tooltip=" {{:: 'recipe_edit_step_remove_tooltip' | translate:{name:RecipeEditStep.step.name} }}"
             class="btn btn-link btn-xs"
             ng-really-title="{{:: 'common_dialog_confirmation' | translate }}"
@@ -24,7 +38,7 @@
   <div>
       <label data-translate="recipe_edit_ingredients"></label>
       <ul class="ingredient-list">
-          <li data-ng-repeat="ingredient in RecipeEditStep.step.ingredients">
+          <li data-ng-repeat="ingredient in RecipeEditStep.step.ingredients track by ingredient._uuid">
             <i class="{{RecipeEditStep.icons[ingredient.type].icon}}"></i>
             <editor-quantity data-model="ingredient.qty"></editor-quantity>
             <editor-aroma data-ng-if="ingredient.type==='aroma'"

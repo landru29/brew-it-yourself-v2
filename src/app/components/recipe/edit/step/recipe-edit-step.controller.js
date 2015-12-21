@@ -21,4 +21,14 @@ angular.module('brewItYourself').controller('RecipeEditStepCtrl',
       });
     };
 
+    this.moveUp = function(steps, step) {
+      var index = steps.indexOf(step);
+      steps.splice(index-1, 0, steps.splice(index, 1)[0]);
+    };
+
+    this.moveDown = function(steps, step) {
+      var index = steps.indexOf(step);
+      steps.splice(index+1, 0, steps.splice(index, 1)[0]);
+    };
+
   });
