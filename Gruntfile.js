@@ -17,7 +17,8 @@ module.exports = function (grunt) {
 
     var project= {
         build: './build',
-        dist: './dist',
+        dist: './dist/public',
+        rootDist: './dist',
         src: './src',
         app: './src/app',
         bower: './bower_components',
@@ -128,7 +129,7 @@ module.exports = function (grunt) {
         },
 
         clean: {
-            dist: ['<%= project.dist%>', '<%= project.build%>'],
+            dist: ['<%= project.rootDist%>', '<%= project.build%>'],
             dev: ['<%= project.build%>'],
             font: ['<%= project.beerFont%>']
         },
@@ -182,7 +183,7 @@ module.exports = function (grunt) {
         },
 
         ngtemplates: {
-            TatUi: {
+            brewItYourself: {
                 cwd: '<%= project.src%>',
                 src: 'app/**/*.html',
                 dest: '<%= project.build%>/template.js',
@@ -204,6 +205,17 @@ module.exports = function (grunt) {
         },
 
         copy: {
+            server: {
+              files: [
+                {
+                  expand: true,
+                  flatten: false,
+                  src: 'server/**',
+                  dest: '<%= project.rootDist%>/',
+                  filter: 'isFile'
+                }
+              ]
+            },
             translations: {
                 files: [
                     {
@@ -348,7 +360,7 @@ module.exports = function (grunt) {
                 dest: 'docs',
                 html5Mode: false,
                 startPage: '/api',
-                title: "TatUi Documentation",
+                title: "brewItYourself Documentation",
                 titleLink: "/api",
                 sourceLink: '/{{file}}#{{codeline}}'
             },
@@ -408,7 +420,7 @@ module.exports = function (grunt) {
         'copy:dist',
         'less',
         'useminPrepare',
-        'ngtemplates:TatUi',
+        'ngtemplates:brewItYourself',
         'concat:generated',
         'ngAnnotate',
         'cssmin:generated',
@@ -416,7 +428,8 @@ module.exports = function (grunt) {
         'filerev:js',
         'filerev:css',
         'usemin',
-        'copy:assets'
+        'copy:assets',
+        'copy:server'
     ]);
 
     grunt.registerTask('default', ['dist']);

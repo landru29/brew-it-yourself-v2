@@ -6,7 +6,7 @@ angular.module('brewItYourself').component('editorQuantity',
     accept: "&"
   },
   controllerAs: 'EditorQuantity',
-  controller: function($scope, UnitsConversion) {
+  controller: ['$scope', 'UnitsConversion', function($scope, UnitsConversion) {
     'use strict';
 
     var self = this;
@@ -56,6 +56,6 @@ angular.module('brewItYourself').component('editorQuantity',
 
     init();
 
-  },
+  }],
   templateUrl: 'app/shared/editor/quantity/editor-quantity.html'
 });
