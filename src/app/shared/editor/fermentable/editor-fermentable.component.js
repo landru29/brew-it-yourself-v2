@@ -6,7 +6,7 @@ angular.module('brewItYourself').component('editorFermentable',
   },
   isolate: true,
   controllerAs: 'EditorFermentable',
-  controller: ['UnitsConversion', function(UnitsConversion) {
+  controller: function(UnitsConversion) {
     'use strict';
 
     this.edit = function() {
@@ -27,6 +27,6 @@ angular.module('brewItYourself').component('editorFermentable',
       this.model = JSON.parse(JSON.stringify(this.editingModel));
       this.accept({'$value': this.model});
     };
-  }],
+  },
   templateUrl: 'app/shared/editor/fermentable/editor-fermentable.html'
 });

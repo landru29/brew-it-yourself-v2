@@ -20,6 +20,7 @@ module.exports = function (grunt) {
         dist: './dist/public',
         rootDist: './dist',
         src: './src',
+        server: './server',
         app: './src/app',
         bower: './bower_components',
         beerFont: './beer-font'
@@ -127,9 +128,21 @@ module.exports = function (grunt) {
                 src: ['<%= project.app%>/constants.less']
             },
         },
+        
+        auto_install: {
+			server: {
+			  options: {
+				cwd: '<%= project.server%>',
+				stdout: true,
+				stderr: true,
+				failOnError: true,
+				npm: '--production'
+			  }
+			}
+		},
 
         clean: {
-            dist: ['<%= project.rootDist%>', '<%= project.build%>'],
+            dist: ['<%= project.rootDist%>', '<%= project.build%>', '<%= project.server%>/node_modules'],
             dev: ['<%= project.build%>'],
             font: ['<%= project.beerFont%>']
         },
@@ -429,6 +442,7 @@ module.exports = function (grunt) {
         'filerev:css',
         'usemin',
         'copy:assets',
+        'auto_install:server',
         'copy:server'
     ]);
 

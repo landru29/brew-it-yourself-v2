@@ -41,7 +41,8 @@
     "karma-phantomjs-launcher": "0.1.4",
     "lodash": "3.10.1",
     "matchdep": "0.3.0",
-    "node-xml-lite": "*"
+    "node-xml-lite": "*",
+    "grunt-auto-install": "0.3.0"
   },
   "dependencies": {
     "chalk": "1.1.0"
