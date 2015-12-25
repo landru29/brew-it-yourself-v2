@@ -20,7 +20,7 @@ RUN \
     ln -s /opt/node/bin/* . && \
     echo "Ready"
 
-CWD cd /dist/server && \
+CMD cd /dist/server && \
     rm -rf node_modules && \
     ${NPM} install --production && \
     ${NPM} start
