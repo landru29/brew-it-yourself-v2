@@ -9,10 +9,17 @@ body {
       margin-bottom: 50px;
       font-family: sans-serif;
       font-weight: bold;
+      font-size:36px;
+      @media (max-width: @screen-sm-min) {
+        font-size:28px;
+      }
       i {
         vertical-align: text-top !important;
         &.fa {
           font-size: 2em;
+          @media (max-width: @screen-sm-min) {
+            ont-size: 1.5em;
+          }
         }
       }
     }
@@ -29,5 +36,12 @@ body {
       font-weight: 700;
       margin: 20px 70px 0px 70px;
       background: url(../assets/img/chope.png) no-repeat;
+      @media (max-width: @screen-sm-min) {
+        background-size: 45px;
+      }
+      padding-left: 45px;
+      @media (max-width: @screen-sm-min) {
+        font-size: 40px;
+      }
   }
 }
