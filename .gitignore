@@ -11,3 +11,4 @@ npm-debug.log
 config.json
 config.json.dev
 .DS_Store
+.parse.local

@@ -14,6 +14,7 @@ angular.module('brewItYourself', [
     'flash',
     'angularMoment',
     'BeerToolbox',
+    'UnitsConversion',
     'toaster',
     'uuid'
 ])

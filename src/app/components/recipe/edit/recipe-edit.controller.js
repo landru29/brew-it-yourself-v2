@@ -9,7 +9,7 @@ angular.module('brewItYourself').controller('RecipeEditCtrl', function($statePar
     function init() {
         self.recipeId = $stateParams.id;
         self.recipe = {};
-        Loader.file().load('sample.json').then(
+        Loader.parse().load(self.recipeId).then(
             function (recipe) {
                 self.recipe = new Recipe(recipe);
             },
