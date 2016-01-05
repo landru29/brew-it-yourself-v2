@@ -10,7 +10,7 @@
 
 var fileApp = require('./app/file-server.js');
 fileApp.logger = logger;
-fileApp.set('port', process.env.PORT || 80);
+fileApp.set('port', process.env.PORT || 9000);
 
 /* Binding */
 var fileServer = fileApp.listen(fileApp.get('port'), function() {
