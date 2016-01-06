@@ -1,4 +1,4 @@
-angular.module('brewItYourself').controller('RecipeEditCtrl', function($stateParams, Loader, Recipe, Step, toaster) {
+angular.module('brewItYourself').controller('RecipeEditCtrl', function($stateParams, Resource, Recipe, Step, toaster) {
     'use strict';
     var self = this;
 
@@ -9,7 +9,7 @@ angular.module('brewItYourself').controller('RecipeEditCtrl', function($statePar
     function init() {
         self.recipeId = $stateParams.id;
         self.recipe = {};
-        Loader.parse().load(self.recipeId).then(
+        Resource.load(self.recipeId).then(
             function (recipe) {
                 self.recipe = new Recipe(recipe);
             },

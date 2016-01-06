@@ -22,4 +22,9 @@
   <translation id="ingredient_type_yeast">Yeast</translation>
   <translation id="ingredient_type_aroma">Amora</translation>
   <translation id="ingredient_type_water">Water</translation>
+
+  <translation id="login">Login</translation>
+  <translation id="logout">Logout</translation>
+  <translation id="login_modal_title">Connect</translation>
+  <translation id="login_error">Bad login or password</translation>
 </translations>

@@ -22,4 +22,9 @@
   <translation id="ingredient_type_yeast">Levure</translation>
   <translation id="ingredient_type_aroma">Arôme</translation>
   <translation id="ingredient_type_water">Eau</translation>
+
+  <translation id="login">Connexion</translation>
+  <translation id="logout">Déconnexion</translation>
+  <translation id="login_modal_title">Se connecter</translation>
+  <translation id="login_error">Mauvais login ou mot de passe</translation>
 </translations>
