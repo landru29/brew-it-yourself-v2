@@ -35,7 +35,7 @@ install: $(NODE_MODULES) $(BOWER_COMPONENTS)
 clean:
 	$(DEL) $(BUILD) && $(DEL) $(DIST) && $(DEL) $(NODE_MODULES) && $(DEL) $(BOWER_COMPONENTS)
 
-dist: install
+dist: release
 
 docker: dist
 	$(DOCKER) build -t $(PROJECT) .
@@ -46,6 +46,7 @@ sail_send: docker
 
 sail: sail_send
 	$(SAIL) service add $(SAIL_TAG) --publish 80:9000 --network predictor $(PROJECT)
+	$(SAIL) service start $(SAIL_TAG)
 
 sail-redeploy: sail_send
 	$(SAIL) service redeploy $(SAIL_TAG)
