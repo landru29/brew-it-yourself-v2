@@ -20,7 +20,7 @@ angular.module('brewItYourself', [
 ])
     .config(function($urlRouterProvider, $locationProvider) {
         'use strict';
-        $urlRouterProvider.otherwise('/');
+        $urlRouterProvider.otherwise('/recipe/list');
         $locationProvider.html5Mode(true);
     })
 
@@ -70,5 +70,4 @@ angular.module('brewItYourself', [
             $translate.refresh();
         });
     })
-
 ;

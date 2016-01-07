@@ -26,4 +26,10 @@ angular.module('brewItYourself').service('ResourceFile', function($http, $q) {
       return true;
     };
 
+    this.listRecipe = function() {
+      return $q(function(resolve, reject) {
+        resolve({data: {id: "sample.json", name: "landreuse"}, count: 1});
+      });
+    };
+
 });

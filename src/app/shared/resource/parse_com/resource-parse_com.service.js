@@ -6,7 +6,7 @@ angular.module('brewItYourself').service('ResourceParseCom', function($http, $q,
       Parse.Cloud.run('getRecipe', {
         id: id
       }).then(function(recipe) {
-        resolve(JSON.parse(recipe));
+        resolve(recipe);
       }, reject);
     });
   };
@@ -21,6 +21,14 @@ angular.module('brewItYourself').service('ResourceParseCom', function($http, $q,
 
   this.isConnected = function() {
     return Parse.User.current();
+  };
+
+  this.listRecipe = function() {
+    return $q(function(resolve, reject) {
+      Parse.Cloud.run('listRecipes', {}).then(function(data) {
+        resolve(data);
+      }, reject);
+    });
   };
 
 });

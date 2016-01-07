@@ -1,0 +1,18 @@
+<div class="container-fluid recipe-edit">
+  <header>
+    <h1>
+      <i class="beer-icon beer-beer-glass"></i>
+      <span data-translate="recipe_list_title"></span>
+    </h1>
+  </header>
+  <div class="row">
+    <div class="col-md-6 col-xs-12">
+      <ul>
+        <spinner data-ng-show="RecipeList.isLoading"></spinner>
+        <li data-ng-repeat="line in RecipeList.recipeList track by line.id">
+          <a data-ui-sref="recipe-edit({id:line.id})" data-ng-bind="line.name"></a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
