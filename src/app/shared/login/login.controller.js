@@ -3,7 +3,7 @@ angular.module('brewItYourself').controller('LoginModalController',
   var self = this;
 
   this.ok = function() {
-    Resource.login(self.username, self.password).then(function(){
+    Resource.user.login(self.username, self.password).then(function(){
       $uibModalInstance.close();
     }, function() {
       $uibModalInstance.close();

@@ -4,10 +4,10 @@ angular.module('brewItYourself').component('login',
   controller: function($uibModal, Resource) {
     'use strict';
 
-    this.isConnected = Resource.isConnected;
+    this.isConnected = Resource.user.isConnected;
 
     this.logout = function() {
-      return Resource.logout();
+      return Resource.user.logout();
     };
 
     this.login = function() {

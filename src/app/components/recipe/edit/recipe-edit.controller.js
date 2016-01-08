@@ -7,9 +7,8 @@ angular.module('brewItYourself').controller('RecipeEditCtrl', function($statePar
     };
 
     function init() {
-        self.recipeId = $stateParams.id;
-        self.recipe = {};
-        Resource.load(self.recipeId).then(
+        self.recipe = null;
+        Resource.recipe.get($stateParams.id).then(
             function (recipe) {
                 self.recipe = new Recipe(recipe);
             },
