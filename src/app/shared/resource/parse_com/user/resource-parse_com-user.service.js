@@ -1,11 +1,16 @@
 angular.module('brewItYourself').service('ResourceParseComUser', function($q) {
 
   this.login = function(username, password) {
-    return Parse.User.logIn(username, password);
+    return $q(function(resolve, reject) {
+      Parse.User.logIn(username, password).then(resolve, reject);
+    });
   };
 
   this.logout = function() {
-    return Parse.User.logOut();
+    return $q(function(resolve) {
+      Parse.User.logOut();
+      resolve();
+    });
   };
 
   this.isConnected = function() {

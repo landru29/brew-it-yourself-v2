@@ -1,5 +1,6 @@
-angular.module('brewItYourself').controller('HomeCtrl', 
-	function() {
-		this.name="Hello world";
+angular.module('brewItYourself').controller('HomeCtrl',
+	function($state) {
+		$state.go('recipe-list');
+
 	}
 );

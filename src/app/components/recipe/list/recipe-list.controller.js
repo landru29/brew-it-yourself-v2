@@ -1,4 +1,4 @@
-angular.module('brewItYourself').controller('RecipeListCtrl', function(Resource, toaster) {
+angular.module('brewItYourself').controller('RecipeListCtrl', function($scope, Resource, toaster) {
     'use strict';
     var self = this;
 
@@ -18,6 +18,10 @@ angular.module('brewItYourself').controller('RecipeListCtrl', function(Resource,
           self.isLoading = false;
         });
     }
+
+    $scope.$on('user', function() {
+      init();
+    });
 
     init();
 });

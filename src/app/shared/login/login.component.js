@@ -1,13 +1,15 @@
 angular.module('brewItYourself').component('login',
 {
   controllerAs: 'Login',
-  controller: function($uibModal, Resource) {
+  controller: function($uibModal, $rootScope, Resource) {
     'use strict';
 
     this.isConnected = Resource.user.isConnected;
 
     this.logout = function() {
-      return Resource.user.logout();
+      return Resource.user.logout().finally(function() {
+        $rootScope.$broadcast('user');
+      });
     };
 
     this.login = function() {

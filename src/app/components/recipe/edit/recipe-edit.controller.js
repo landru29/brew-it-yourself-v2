@@ -1,4 +1,5 @@
-angular.module('brewItYourself').controller('RecipeEditCtrl', function($stateParams, Resource, Recipe, Step, toaster) {
+angular.module('brewItYourself').controller('RecipeEditCtrl',
+  function($scope, $stateParams, $translate, Resource, Recipe, Step, toaster) {
     'use strict';
     var self = this;
 
@@ -7,12 +8,13 @@ angular.module('brewItYourself').controller('RecipeEditCtrl', function($statePar
     };
 
     function init() {
-        self.recipe = null;
+        delete self.recipe;
         Resource.recipe.get($stateParams.id).then(
             function (recipe) {
                 self.recipe = new Recipe(recipe);
             },
             function(err) {
+              self.recipe = null;
               toaster.pop('error', $translate.instant('error_occured'), JSON.stringify(err));
             }
         );
@@ -21,6 +23,10 @@ angular.module('brewItYourself').controller('RecipeEditCtrl', function($statePar
     this.addStep = function(steps) {
       steps.push(new Step());
     };
+
+    $scope.$on('user', function() {
+      init();
+    });
 
     init();
 });
