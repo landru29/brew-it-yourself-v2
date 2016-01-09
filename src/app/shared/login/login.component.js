@@ -9,6 +9,12 @@ angular.module('brewItYourself').component('login',
     this.logout = function() {
       return Resource.user.logout().finally(function() {
         $rootScope.$broadcast('user');
+        $state.go(
+          $state.current,
+          $stateParams, {
+            reload: true
+          }
+        );
       });
     };
 

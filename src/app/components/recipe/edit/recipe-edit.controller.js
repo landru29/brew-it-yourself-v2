@@ -8,6 +8,12 @@ angular.module('brewItYourself').controller('RecipeEditCtrl',
     };
 
     function init() {
+      if (!Resource.user.isConnected()) {
+        self.setSaveFag(false);
+        delete $localStorage.currentRecipe;
+        delete $localStorage.recipeCancel;
+        return $state.go('home');
+      }
       if (($localStorage.currentRecipe) && ($localStorage.recipeForce)) {
         self.recipe = $localStorage.currentRecipe;
         self.setWatcher();
@@ -85,7 +91,10 @@ angular.module('brewItYourself').controller('RecipeEditCtrl',
     };
 
     $rootScope.$on("$stateChangeStart", function (event, toState, toParams, fromState) {
-      if ((fromState.name === 'recipe-edit') && (self.recipe) && (JSON.stringify(self.recipe) !== JSON.stringify($localStorage.recipeCancel) )) {
+      if ((fromState.name === 'recipe-edit') &&
+          (self.recipe) &&
+          ($localStorage.recipeCancel) &&
+          (JSON.stringify(self.recipe) !== JSON.stringify($localStorage.recipeCancel))) {
         if (!$localStorage.recipeForce) {
           event.preventDefault();
           return new Confirm($translate.instant('recipe_edit_save_confirm', {name: self.recipe.name})).then(

@@ -1,10 +1,16 @@
 angular.module('brewItYourself').controller('LoginModalController',
-  function($uibModalInstance, $translate, $rootScope, Resource, toaster) {
+  function($uibModalInstance, $translate, $rootScope, $state, $stateParams, Resource, toaster) {
   var self = this;
 
   this.ok = function() {
     Resource.user.login(self.username, self.password).then(function(){
       $rootScope.$broadcast('user');
+      $state.go(
+        $state.current,
+        $stateParams, {
+          reload: true
+        }
+      );
     }, function() {
       toaster.pop({
                 type: 'error',
