@@ -4,6 +4,13 @@
       <i class="beer-icon beer-beer-glass"></i>
       <span data-translate="recipe_edit_title"></span> -
       <span>{{RecipeEdit.recipe.name | stringLimit:30:'middle'}}</span>
+      <button data-ng-show="RecipeEdit.needSave()"
+              data-ng-click="RecipeEdit.save()"
+              class="btn btn-link"
+              type="button"
+      >
+        <i class="fa fa-save"></i>
+      </button>
       <a data-ui-sref="recipe-print({id:RecipeEdit.recipe.id})" class="btn">
         <i class="fa fa-print"></i>
       </a>

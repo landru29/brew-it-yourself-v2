@@ -19,4 +19,7 @@
 
 		<translation id="recipe_edit_step_move_up_tooltip">Remonter</translation>
 		<translation id="recipe_edit_step_move_down_tooltip">redescendre</translation>
+
+		<translation id="recipe_edit_backup_confirm">Vous n'avez pas sauvegardé votre dernière recette {{name}} ({{id}}). Voulez-vous procéder à une restauration ?</translation>
+		<translation id="recipe_edit_save_confirm">Vous n'avez pas sauvegardé votre recette {{name}}. Voulez-vous abandonner vos modifications ?</translation>
 </translations>

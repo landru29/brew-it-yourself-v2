@@ -19,4 +19,7 @@
 
     <translation id="recipe_edit_step_move_up_tooltip">Move up</translation>
 		<translation id="recipe_edit_step_move_down_tooltip">Move down</translation>
+
+    <translation id="recipe_edit_backup_confirm">You did not save your last recipe {{name}} ({{id}}). Do you want to restore it ?</translation>
+    <translation id="recipe_edit_save_confirm">You did not save your recipe {{name}}. Do you want to give up your modifications ?</translation>
 </translations>

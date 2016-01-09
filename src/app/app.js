@@ -11,6 +11,7 @@ angular.module('brewItYourself', [
     'ngSanitize',
     'pascalprecht.translate',
     'ngResource',
+    'ngStorage',
     'flash',
     'angularMoment',
     'BeerToolbox',
