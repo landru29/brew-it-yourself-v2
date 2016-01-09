@@ -45,9 +45,9 @@ sail_send: docker
 	$(DOCKER) push $(SAIL_REGISTRY)/$(SAIL_TAG)
 
 sail: sail_send
-	$(SAIL) service add $(SAIL_TAG) --publish 80:9000 --network predictor --batch $(PROJECT)
-	$(SAIL) service start $(SAIL_TAG)
+	$(SAIL) service add $(SAIL_TAG) --batch --publish 80:9000 --network predictor --batch $(PROJECT)
+	$(SAIL) service start --batch $(SAIL_TAG)
 
 sail-redeploy: sail_send
-	$(SAIL) service redeploy $(SAIL_TAG)
-	$(SAIL) service start $(SAIL_TAG)
+	$(SAIL) service redeploy --batch $(SAIL_TAG)
+	$(SAIL) service start --batch $(SAIL_TAG)

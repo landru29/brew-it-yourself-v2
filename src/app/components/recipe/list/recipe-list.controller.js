@@ -1,4 +1,5 @@
-angular.module('brewItYourself').controller('RecipeListCtrl', function($scope, $state, Resource, toaster) {
+angular.module('brewItYourself').controller('RecipeListCtrl',
+function($scope, $state, $translate, Resource, toaster) {
     'use strict';
     var self = this;
 
@@ -25,6 +26,42 @@ angular.module('brewItYourself').controller('RecipeListCtrl', function($scope, $
         ).finally(function() {
           self.isLoading = false;
         });
+    };
+
+    self.add = function() {
+      self.adding = true;
+      Resource.recipe.create().then(
+          function (recipe) {
+              if (recipe.id) {
+                $state.go('recipe-edit', {id: recipe.id});
+              }
+          },
+          function(err) {
+            self.recipe = null;
+            toaster.pop('error', $translate.instant('error_occured'), JSON.stringify(err));
+          }
+      ).finally(function() {
+        self.adding = false;
+      });
+    };
+
+    self.remove = function(recipe) {
+      recipe.removing = true;
+      Resource.recipe.remove(recipe.id).then(
+          function () {
+            var index = self.recipeList.indexOf(recipe);
+            if (index>-1) {
+              self.recipeList.splice(index, 1);
+              RecipeList.recipeCount--;
+            }
+          },
+          function(err) {
+            self.recipe = null;
+            toaster.pop('error', $translate.instant('error_occured'), JSON.stringify(err));
+          }
+      ).finally(function() {
+        delete recipe.removing;
+      });
     };
 
     $scope.$on('user', function() {

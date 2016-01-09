@@ -12,8 +12,26 @@
         <spinner data-ng-show="RecipeList.isLoading"></spinner>
         <li data-ng-repeat="line in RecipeList.recipeList track by line.id">
           <a data-ui-sref="recipe-edit({id:line.id})" data-ng-bind="line.name"></a>
+          <button class="btn btn-link btn-sm"
+                  data-ng-hide="line.removing"
+                  data-ng-click="RecipeList.remove(line)">
+            <i class="fa fa-trash-o"></i>
+          </button>
+          <spinner data-ng-show="line.removing"></spinner>
         </li>
       </ul>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-6 col-xs-12">
+      <button class="btn btn-primary btn-sm"
+              type="button"
+              data-ng-disabled="RecipeList.adding"
+              data-ng-click="RecipeList.add()">
+        <i class="fa fa-plus"></i>
+        <span data-translate="recipe_list_add"></span>
+        <spinner data-ng-show="RecipeList.adding"></spinner>
+      </button>
     </div>
   </div>
 </div>

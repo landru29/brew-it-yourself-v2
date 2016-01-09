@@ -83,10 +83,13 @@ angular.module('brewItYourself').controller('RecipeEditCtrl',
 
     this.save = function() {
       return $q(function(resolve, reject) {
-        // save to database
-        self.toCancel();
-        self.setSaveFag(false);
-        resolve();
+        Resource.recipe.save(self.recipe).then(function(recipe){
+          self.toCancel();
+          self.setSaveFag(false);
+          resolve();
+        }, function(){
+          toaster.pop('error', $translate.instant('error_occured'), JSON.stringify(err));
+        });
       });
     };
 
