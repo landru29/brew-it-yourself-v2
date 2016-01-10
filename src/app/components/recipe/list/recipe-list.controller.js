@@ -1,5 +1,5 @@
 angular.module('brewItYourself').controller('RecipeListCtrl',
-function($scope, $state, $translate, Resource, toaster) {
+function($scope, $state, $translate, Resource, toaster, Recipe) {
     'use strict';
     var self = this;
 
@@ -43,6 +43,31 @@ function($scope, $state, $translate, Resource, toaster) {
       ).finally(function() {
         self.adding = false;
       });
+    };
+
+    self.import = function() {
+      try {
+        var recipeData = JSON.parse(self.importData);
+        var recipe = new Recipe(recipe);
+
+        self.importing = true;
+        Resource.recipe.create(recipe).then(
+            function (recipe) {
+                if (recipe.id) {
+                  $state.go('recipe-edit', {id: recipe.id});
+                }
+            },
+            function(err) {
+              self.recipe = null;
+              toaster.pop('error', $translate.instant('error_occured'), JSON.stringify(err));
+            }
+        ).finally(function() {
+          self.importing = false;
+        });
+
+      } catch (e) {
+        toaster.pop('error', $translate.instant('error_occured'), JSON.stringify(e));
+      }
     };
 
     self.remove = function(recipe) {

@@ -1,5 +1,11 @@
 @import "constants.less";
 
+@media print {
+  a[href]:after {
+    content: none !important;
+  }
+}
+
 body {
     background-color: @application-bg;
     color: @normalColor;

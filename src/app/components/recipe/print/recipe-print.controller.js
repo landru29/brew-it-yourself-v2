@@ -1,5 +1,5 @@
 angular.module('brewItYourself').controller('RecipePrintCtrl',
-  function($scope, $stateParams, $translate, Resource, Recipe, Step, toaster) {
+  function($scope, $stateParams, $translate, $timeout, Resource, Recipe, Step, toaster) {
     'use strict';
     var self = this;
 
@@ -9,6 +9,9 @@ angular.module('brewItYourself').controller('RecipePrintCtrl',
         Resource.recipe.get($stateParams.id).then(
             function (recipe) {
                 self.recipe = new Recipe(recipe);
+                $timeout(function(){
+                  window.print();
+                });
             },
             function(err) {
               self.recipe = null;

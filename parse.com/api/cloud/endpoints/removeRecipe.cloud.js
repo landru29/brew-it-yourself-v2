@@ -12,6 +12,19 @@ Parse.Cloud.define('removeRecipe', function(request, response) {
               error: response.error
           });
       },
-      error: response.error
+      error: function(model, status) {
+        switch (status.code) {
+          case 101:
+            return response.error({
+              code: 404,
+              message: 'Not found'
+            });
+          default:
+            return response.error({
+              code: 500,
+              message: 'Internal server error'
+            });
+        }
+      }
   });
 });

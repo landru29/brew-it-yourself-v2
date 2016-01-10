@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <translations>
   <translation id="error">Erreur</translation>
+  <translation id="cancel">Annuler</translation>
+  <translation id="close">Fermer</translation>
   <translation id="confirm">Confirmation</translation>
+  <translation id="export">Exporter</translation>
+  <translation id="export_instructions">Copiez-collez ce contenu dans un nouveau fichier et enregistrez-le sur votre disque</translation>
 </translations>

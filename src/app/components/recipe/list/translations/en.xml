@@ -2,4 +2,6 @@
 <translations>
   <translation id="recipe_list_title">My recipes</translation>
   <translation id="recipe_list_add">Add</translation>
+  <translation id="recipe_list_import">Import</translation>
+  <translation id="recipe_list_import_label">Paste data in JSON format:</translation>
 </translations>

@@ -2,4 +2,6 @@
 <translations>
   <translation id="recipe_list_title">Mes recettes</translation>
   <translation id="recipe_list_add">Ajouter</translation>
+  <translation id="recipe_list_import">Importer</translation>
+  <translation id="recipe_list_import_label">Coller les données au format JSON:</translation>
 </translations>

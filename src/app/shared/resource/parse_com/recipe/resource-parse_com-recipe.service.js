@@ -6,17 +6,21 @@ angular.module('brewItYourself').service('ResourceParseComRecipe', function($htt
         id: id
       }).then(function(recipe) {
         resolve(recipe);
-      }, reject);
+      }, function(rejection) {
+        reject(rejection.error);
+      });
     });
   };
 
   this.create = function(model) {
     return $q(function(resolve, reject) {
       Parse.Cloud.run('createRecipe', {
-        model: model
+        model: model ? model.stringify() : null
       }).then(function(recipe) {
         resolve(recipe);
-      }, reject);
+      }, function(rejection) {
+        reject(rejection.error);
+      });
     });
   };
 
@@ -26,17 +30,21 @@ angular.module('brewItYourself').service('ResourceParseComRecipe', function($htt
         id: id
       }).then(function() {
         resolve();
-      }, reject);
+      }, function(rejection) {
+        reject(rejection.error);
+      });
     });
   };
 
   this.save = function(recipe) {
     return $q(function(resolve, reject) {
       Parse.Cloud.run('saveRecipe', {
-        data: JSON.stringify(recipe)
+        data: recipe.stringify()
       }).then(function(recipe) {
         resolve(recipe);
-      }, reject);
+      }, function(rejection) {
+        reject(rejection.error);
+      });
     });
   };
 
@@ -44,7 +52,9 @@ angular.module('brewItYourself').service('ResourceParseComRecipe', function($htt
     return $q(function(resolve, reject) {
       Parse.Cloud.run('listRecipes', {}).then(function(data) {
         resolve(data);
-      }, reject);
+      }, function(rejection) {
+        reject(rejection.error);
+      });
     });
   };
 

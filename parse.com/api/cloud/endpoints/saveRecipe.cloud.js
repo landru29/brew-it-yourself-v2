@@ -16,9 +16,27 @@ Parse.Cloud.define('saveRecipe', function(request, response) {
                 recipeData.id = newRecipe.id;
                 response.success(recipeData);
               },
-              error: response.error
+              error: function(model, status) {
+                return response.error({
+                  code: 500,
+                  message: 'Internal server error'
+                });
+              }
           });
       },
-      error: response.error
+      error: function(model, status) {
+        switch (status.code) {
+          case 101:
+            return response.error({
+              code: 404,
+              message: 'Not found'
+            });
+          default:
+            return response.error({
+              code: 500,
+              message: 'Internal server error'
+            });
+        }
+      }
   });
 });

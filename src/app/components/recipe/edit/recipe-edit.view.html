@@ -17,6 +17,12 @@
       <a data-ui-sref="recipe-list()" class="btn">
         <i class="fa fa-list"></i>
       </a>
+      <button data-ng-click="RecipeEdit.export()"
+              class="btn btn-link"
+              type="button"
+      >
+        <i class="fa fa-download"></i>
+      </button>
     </h1>
   </header>
   <div class="row" data-ng-hide="RecipeEdit.recipe !== undefined">

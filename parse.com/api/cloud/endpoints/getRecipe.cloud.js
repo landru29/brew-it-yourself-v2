@@ -11,6 +11,19 @@ Parse.Cloud.define('getRecipe', function(request, response) {
       recipeData.id = recipe.id;
       response.success(recipeData);
     },
-    error: response.error
+    error: function(model, status) {
+      switch (status.code) {
+        case 101:
+          return response.error({
+            code: 404,
+            message: 'Not found'
+          });
+        default:
+          return response.error({
+            code: 500,
+            message: 'Internal server error'
+          });
+      }
+    }
   });
 });

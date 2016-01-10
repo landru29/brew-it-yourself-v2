@@ -1,5 +1,5 @@
 angular.module('brewItYourself').controller('RecipeEditCtrl',
-  function($scope, $rootScope, $stateParams, $state, $translate, $q, $localStorage, Confirm, Resource, Recipe, Step, toaster) {
+  function($scope, $rootScope, $stateParams, $state, $translate, $q, $localStorage, Confirm, Resource, Recipe, Step, toaster, Export) {
     'use strict';
     var self = this;
 
@@ -93,11 +93,15 @@ angular.module('brewItYourself').controller('RecipeEditCtrl',
       });
     };
 
+    this.export = function() {
+      return new Export(self.recipe.stringify());
+    };
+
     $rootScope.$on("$stateChangeStart", function (event, toState, toParams, fromState) {
-      if ((fromState.name === 'recipe-edit') &&
-          (self.recipe) &&
-          ($localStorage.recipeCancel) &&
-          (JSON.stringify(self.recipe) !== JSON.stringify($localStorage.recipeCancel))) {
+      if ( (fromState.name === 'recipe-edit') &&
+           (self.recipe) &&
+           ($localStorage.recipeCancel) &&
+           (self.needSave()) ) {
         if (!$localStorage.recipeForce) {
           event.preventDefault();
           return new Confirm($translate.instant('recipe_edit_save_confirm', {name: self.recipe.name})).then(

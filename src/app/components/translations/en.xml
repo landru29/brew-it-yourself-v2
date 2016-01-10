@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <translations>
   <translation id="error">Error</translation>
+  <translation id="cancel">Cancel</translation>
+  <translation id="close">Close</translation>
   <translation id="confirm">Confirmation</translation>
+  <translation id="export">Export</translation>
+  <translation id="export_instructions">Copy-paste this content in a new file and save it on your local disk</translation>
 </translations>

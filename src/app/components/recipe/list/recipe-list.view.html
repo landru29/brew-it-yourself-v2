@@ -32,6 +32,39 @@
         <span data-translate="recipe_list_add"></span>
         <spinner data-ng-show="RecipeList.adding"></spinner>
       </button>
+      <button class="btn btn-primary btn-sm"
+              type="button"
+              data-ng-hide="RecipeList.importPanel"
+              data-ng-disabled="RecipeList.importing"
+              data-ng-click="RecipeList.importPanel = true">
+        <i class="fa fa-upload"></i>
+        <span data-translate="recipe_list_import"></span>
+      </button>
+      <div data-ng-show="RecipeList.importPanel" class="import row">
+        <div class="col-md-12 col-xs-12">
+          <div class="form-group">
+            <label for="import" data-translate="recipe_list_import_label"></label>
+            <textarea id="import" data-ng-model="RecipeList.importData" class="form-control"></textarea>
+          </div>
+        </div>
+        <div class="col-md-12 col-xs-12 action-buttons">
+          <button class="btn btn-primary btn-sm"
+                  type="button"
+                  data-ng-disabled="RecipeList.importing"
+                  data-ng-click="RecipeList.import()">
+            <i class="fa fa-upload"></i>
+            <span data-translate="recipe_list_import"></span>
+            <spinner data-ng-show="RecipeList.importing"></spinner>
+          </button>
+          <button class="btn btn-warning btn-sm"
+                  type="button"
+                  data-ng-disabled="RecipeList.importing"
+                  data-ng-click="RecipeList.importPanel = false">
+            <span data-translate="cancel"></span>
+            <spinner data-ng-show="RecipeList.importing"></spinner>
+          </button>
+        </div>
+      </div>
     </div>
   </div>
 </div>

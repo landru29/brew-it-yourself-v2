@@ -6,5 +6,8 @@
     "_default": {
       "link": "brewItYourself"
     }
+  },
+  "bash": {
+	"restApiKey": "xxxxxxx"
   }
 }

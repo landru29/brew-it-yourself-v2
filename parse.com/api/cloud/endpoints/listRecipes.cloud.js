@@ -27,5 +27,10 @@ Parse.Cloud.define('listRecipes', function(request, response) {
       }),
       count: counter
     });
-  }, response.error);
+  }, function(model, status) {
+    return response.error({
+      code: 500,
+      message: 'Internal server error'
+    });
+  });
 });
