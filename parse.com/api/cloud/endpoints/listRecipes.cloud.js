@@ -5,13 +5,13 @@ var extend = require('cloud/libs/extend.js');
 Parse.Cloud.define('listRecipes', function(request, response) {
   var params = extend({
     page: 1,
-    count: 10
+    perPage: 10
   }, request.params);
 
   var recipeQuery = new Parse.Query('recipe');
   recipeQuery.descending('updatedAt');
-  recipeQuery.limit(params.count);
-  recipeQuery.skip((params.page -1) * params.count);
+  recipeQuery.limit(params.perPage);
+  recipeQuery.skip((params.page -1) * params.perPage);
 
   Parse.Promise.when([
     recipeQuery.find(),
@@ -25,7 +25,9 @@ Parse.Cloud.define('listRecipes', function(request, response) {
           name: elt.get('name')
         };
       }),
-      count: counter
+      count: counter,
+      page: params.page,
+      perPage: params.perPage
     });
   }, function(model, status) {
     return response.error({

@@ -3,23 +3,36 @@
     <h1>
       <i class="beer-icon beer-beer-glass"></i>
       <span data-translate="recipe_list_title"></span>
-      <span data-ng-show="RecipeList.recipeCount !== null">({{RecipeList.recipeCount}})</span>
+      <span data-ng-show="RecipeList.recipePagination.count !== null">({{RecipeList.recipePagination.count}})</span>
     </h1>
   </header>
   <div class="row">
     <div class="col-md-6 col-xs-12">
-      <ul>
-        <spinner data-ng-show="RecipeList.isLoading"></spinner>
-        <li data-ng-repeat="line in RecipeList.recipeList track by line.id">
-          <a data-ui-sref="recipe-edit({id:line.id})" data-ng-bind="line.name"></a>
-          <button class="btn btn-link btn-sm"
-                  data-ng-hide="line.removing"
-                  data-ng-click="RecipeList.remove(line)">
-            <i class="fa fa-trash-o"></i>
-          </button>
-          <spinner data-ng-show="line.removing"></spinner>
-        </li>
-      </ul>
+      <uib-pagination boundary-links="true"
+                      total-items="RecipeList.recipePagination.count"
+                      ng-model="RecipeList.recipePagination.page"
+                      items-per-page="RecipeList.recipePagination.perPage"
+                      class="pagination-sm"
+                      previous-text="&lsaquo;"
+                      next-text="&rsaquo;"
+                      first-text="&laquo;"
+                      last-text="&raquo;"></uib-pagination>
+                      <spinner data-ng-show="RecipeList.isLoading"></spinner>
+      <table class="table">
+        <tr data-ng-repeat="line in RecipeList.recipeList track by line.id">
+          <td>
+            <a data-ui-sref="recipe-edit({id:line.id})" data-ng-bind="line.name"></a>
+          </td>
+          <td>
+            <button class="btn btn-link btn-sm"
+                    data-ng-hide="line.removing"
+                    data-ng-click="RecipeList.remove(line)">
+              <i class="fa fa-trash-o"></i>
+            </button>
+            <spinner data-ng-show="line.removing"></spinner>
+          </td>
+        </tr>
+      </table>
     </div>
   </div>
   <div class="row">

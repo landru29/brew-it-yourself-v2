@@ -48,9 +48,12 @@ angular.module('brewItYourself').service('ResourceParseComRecipe', function($htt
     });
   };
 
-  this.list = function() {
+  this.list = function(options) {
+    var params = {};
+    if ((options) && (options.perPage)) params.perPage = options.perPage;
+    if ((options) && (options.page)) params.page = options.page;
     return $q(function(resolve, reject) {
-      Parse.Cloud.run('listRecipes', {}).then(function(data) {
+      Parse.Cloud.run('listRecipes', params).then(function(data) {
         resolve(data);
       }, function(rejection) {
         reject(rejection.error);

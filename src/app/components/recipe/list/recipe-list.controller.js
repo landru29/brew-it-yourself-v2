@@ -4,6 +4,11 @@ function($scope, $state, $translate, Resource, toaster, Recipe) {
     var self = this;
 
     function init() {
+      self.recipePagination = {
+        count: null,
+        perPage: 5,
+        page: 1
+      };
       if (!Resource.user.isConnected()) {
 				$state.go('home');
 			} else {
@@ -14,11 +19,14 @@ function($scope, $state, $translate, Resource, toaster, Recipe) {
     self.load = function() {
         self.isLoading = true;
         self.recipeList = [];
-        self.recipeCount = null;
-        Resource.recipe.list().then(
+        Resource.recipe.list(self.recipePagination).then(
             function (data) {
                 self.recipeList = data.data;
-                self.recipeCount = data.count;
+                self.recipePagination = {
+                  count: data.count,
+                  perPage: data.perPage,
+                  page: data.page
+                };
             },
             function(err) {
               toaster.pop('error', $translate.instant('error_occured'), JSON.stringify(err));
@@ -27,6 +35,12 @@ function($scope, $state, $translate, Resource, toaster, Recipe) {
           self.isLoading = false;
         });
     };
+
+    $scope.$watch('RecipeList.recipePagination.page', function(newVal, oldVal) {
+      if ((newVal) && (newVal !== oldVal)) {
+        self.load();
+      }
+    });
 
     self.add = function() {
       self.adding = true;
