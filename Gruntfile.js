@@ -162,11 +162,17 @@ module.exports = function(grunt) {
       options: {
         name: 'application.config',
         dest: '<%= project.build%>/scripts/config.js',
+      },
+      build: {
         constants: {
           appConfiguration: grunt.file.readJSON('src/assets/config.json')
         }
       },
-      build: {}
+      dev: {
+        constants: {
+          appConfiguration: grunt.file.readJSON('src/assets/config.dev.json')
+        }
+      }
     },
 
     ngAnnotate: {
@@ -385,7 +391,7 @@ module.exports = function(grunt) {
     'copy:fonts',
     'copy:assets',
     'concat:moment',
-    'ngconstant',
+    'ngconstant:dev',
     'wiredep:style',
     'less',
     'wiredep:app',
@@ -401,7 +407,7 @@ module.exports = function(grunt) {
     'jshint:dev',
     'clean:dist',
     'ngdocs',
-    'ngconstant',
+    'ngconstant:build',
     'translation',
     'copy:translations',
     'copy:index',

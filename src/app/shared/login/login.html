@@ -1,7 +1,11 @@
 <div class="login">
+  <a href="{{Login.loginUrl}}"
+     class="login"
+     data-ng-hide="Login.isConnected() && Login.loginUrl"
+     data-translate="login"></a>
   <button class="btn btn-link login"
           data-ng-click="Login.login()"
-          data-ng-hide="Login.isConnected()"
+          data-ng-hide="Login.isConnected() || Login.loginUrl"
           data-translate="login"></button>
   <button class="btn btn-link login"
           data-ng-click="Login.logout()"

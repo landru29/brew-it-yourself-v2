@@ -17,7 +17,8 @@ angular.module('brewItYourself', [
     'BeerToolbox',
     'UnitsConversion',
     'toaster',
-    'uuid'
+    'uuid',
+    'api-plugin'
 ])
     .config(function($urlRouterProvider, $locationProvider) {
         'use strict';

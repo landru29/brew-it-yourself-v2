@@ -1,7 +1,6 @@
 {
-  "parseCom": {
-    "applicationId": "",
-    "javaScriptKey": ""
+  "apiNoopyFr": {
+    "applicationId": ""
   },
-  "loader": "parseCom"
+  "loader": "noopyApi"
 }

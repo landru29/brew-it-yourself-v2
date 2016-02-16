@@ -9,6 +9,6 @@ build
 *.orig
 npm-debug.log
 config.json
-config.json.dev
+config.dev.json
 .DS_Store
 .parse.local

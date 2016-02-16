@@ -13,6 +13,10 @@ angular.module('brewItYourself').service('ResourceParseComUser', function($q) {
     });
   };
 
+  this.getLoginUrl = function() {
+    return;
+  };
+
   this.isConnected = function() {
     return Parse.User.current();
   };
