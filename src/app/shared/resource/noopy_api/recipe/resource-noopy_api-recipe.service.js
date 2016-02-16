@@ -3,8 +3,7 @@ angular.module('brewItYourself').service('ResourceNoopyApiRecipe', function($htt
   this.get = function(id) {
     return $q(function(resolve, reject) {
       $http.get('noopy-api/me/beer/read/' + id).then(function(response) {
-        var newRecipe = response.data.data;
-        recipe.id = _id;
+        var recipe = response.data.data;
         return resolve(recipe);
       }, function(err) {
         return reject(err);
@@ -21,7 +20,7 @@ angular.module('brewItYourself').service('ResourceNoopyApiRecipe', function($htt
         steps: model.steps ? model.steps : []
       }).then(function(response) {
         var newRecipe = response.data.data;
-        newRecipe.id = _id;
+        newRecipe.id = newRecipe._id;
         return resolve(newRecipe);
       }, function(err) {
         return reject(err);
@@ -47,7 +46,7 @@ angular.module('brewItYourself').service('ResourceNoopyApiRecipe', function($htt
         steps: recipe.steps ? model.steps : []
       }).then(function(response) {
         var newRecipe = response.data.data;
-        newRecipe.id = _id;
+        newRecipe.id = newRecipe._id;
         return resolve(newRecipe);
       }, function(err) {
         return reject(err);
@@ -62,10 +61,7 @@ angular.module('brewItYourself').service('ResourceNoopyApiRecipe', function($htt
     return $q(function(resolve, reject) {
       $http.get('noopy-api/me/beer/list').then(function(response) {
         var recipeList = _.isArray(response.data.data) ? response.data.data : [];
-        recipeList.forEach(function(recipe){
-          recipe.id = recipe._id;
-        });
-        return resolve(recipeList);
+        return resolve({data: recipeList});
       }, function(err) {
         return reject(err);
       });
