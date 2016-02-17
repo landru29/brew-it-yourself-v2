@@ -1,6 +1,7 @@
 PROJECT = brew-it-yourself
 NPM ?= npm
 DEL = rm -rf
+TAR = tar czf
 DIST = dist
 BUILD = build
 DOCKER = docker
@@ -9,6 +10,8 @@ ECHO = @echo
 BOWER ?= bower
 NODE_MODULES = node_modules
 BOWER_COMPONENTS = bower_components
+DIST_TAR = dist.tar.gz
+IHM_TAR = ihm.tar.gz
 SAIL_REGISTRY = sailabove.io
 SAIL_TAG = $(account)/$(PROJECT)
 SAIL = sail
@@ -18,6 +21,7 @@ help:
 	$(ECHO) "make install                  Install the dependancies and prepare environment"
 	$(ECHO) "make release                  Generate the release in " $(DIST)
 	$(ECHO) "make clean                    Clean the project"
+	$(ECHO) "make dist                     Build and package the application"
 	$(ECHO) "make sail account=xx          Create a service on Sailabove.io"
 	$(ECHO) "make sail-redeploy account=xx redeploy a service on Sailabove.io"
 
@@ -33,9 +37,11 @@ $(BOWER_COMPONENTS):
 install: $(NODE_MODULES) $(BOWER_COMPONENTS)
 
 clean:
-	$(DEL) $(BUILD) && $(DEL) $(DIST) && $(DEL) $(NODE_MODULES) && $(DEL) $(BOWER_COMPONENTS)
+	$(DEL) $(BUILD) && $(DEL) $(DIST) && $(DEL) $(NODE_MODULES) && $(DEL) $(BOWER_COMPONENTS) && $(DEL) $(DIST_TAR) && $(DEL) $(IHM_TAR)
 
 dist: release
+	$(TAR) $(DIST_TAR) $(DIST)
+	cd $(DIST)/public && $(TAR) ../../$(IHM_TAR) *
 
 docker: dist
 	$(DOCKER) build -t $(PROJECT) .

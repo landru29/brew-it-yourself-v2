@@ -6,7 +6,7 @@ angular.module('brewItYourself').component('login',
 
     this.isConnected = Resource.user.isConnected;
 
-    this.loginUrl = Resource.user.getLoginUrl();
+    this.loginUrl = Resource.user.getLoginUrl;
 
    this.logout = function() {
       return Resource.user.logout().finally(function() {

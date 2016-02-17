@@ -14,8 +14,12 @@ angular.module('brewItYourself').service('ResourceNoopyApiUser', function($q, Lo
     });
   };
 
-  this.getLoginUrl = Noopy.getLoginUrl;
+  this.getLoginUrl = function() {
+    return Noopy.getLoginUrl();
+  };
 
-  this.isConnected = Login.isLoggedIn;
+  this.isConnected = function() {
+    return Login.isLoggedIn();
+  };
 
 });
