@@ -1,71 +1,56 @@
-angular.module('brewItYourself').service('ResourceNoopyApiRecipe', function($http, $q) {
+angular.module('brewItYourself').service('ResourceNoopyApiRecipe', function($resource) {
 
   this.get = function(id) {
-    return $q(function(resolve, reject) {
-      $http.get('noopy-api/me/beer/read/' + id).then(function(response) {
-        var recipe = response.data.data;
-        return resolve(recipe);
-      }, function(err) {
-        return reject(err);
-      });
-    });
+    return $resource('noopy-api/me/beer/read/:recipeId', {}, {
+      get: {
+        interceptor: {
+          response: function(response) {
+            return response.data.data;
+          }
+        }
+      }
+    }).get({recipeId: id}).$promise;
   };
 
   this.create = function(model) {
     model = model ? model : {};
-    return $q(function(resolve, reject) {
-      $http.post('noopy-api/me/beer', {
+    return $resource('noopy-api/me/beer', {}, {
+      post: {
+        interceptor: {
+          response: function(response) {
+            return response.data.data;
+          }
+        }
+      }
+    }).post({
         name: model.name ? model.name : 'New recipe',
         date: model.date ? model.date : (new Date()).toISOString(),
         steps: model.steps ? model.steps : []
-      }).then(function(response) {
-        var newRecipe = response.data.data;
-        newRecipe.id = newRecipe._id;
-        return resolve(newRecipe);
-      }, function(err) {
-        return reject(err);
-      });
-    });
+      }).$promise;
   };
 
   this.remove = function(id) {
-    return $q(function(resolve, reject) {
-      $http.delete('noopy-api/me/beer/' + id).then(function(response) {
-        return resolve(response.data);
-      }, function(err) {
-        return reject(err);
-      });
-    });
+    return $resource('noopy-api/me/beer/:recipeId').delete({recipeId: id}).$promise;
   };
 
   this.save = function(recipe) {
-    return $q(function(resolve, reject) {
-      $http.put('noopy-api/me/beer/' + recipe.id, {
-        name: recipe.name ? model.name : 'New recipe',
-        date: recipe.date ? model.date : (new Date()).toISOString(),
-        steps: recipe.steps ? model.steps : []
-      }).then(function(response) {
-        var newRecipe = response.data.data;
-        newRecipe.id = newRecipe._id;
-        return resolve(newRecipe);
-      }, function(err) {
-        return reject(err);
-      });
-    });
+    return $resource('noopy-api/me/beer/:recipeId', {}, {
+      put: {
+        interceptor: {
+          response: function(response) {
+            return response.data.data;
+          }
+        }
+      }
+    }).put({recipeId: id}, {
+        name: recipe.name ? recipe.name : 'New recipe',
+        date: recipe.date ? recipe.date : (new Date()).toISOString(),
+        steps: recipe.steps ? recipe.steps : []
+      }).$promise;
   };
 
   this.list = function(options) {
-    var params = {};
-    if ((options) && (options.perPage)) params.perPage = options.perPage;
-    if ((options) && (options.page)) params.page = options.page;
-    return $q(function(resolve, reject) {
-      $http.get('noopy-api/me/beer/list').then(function(response) {
-        var recipeList = _.isArray(response.data.data) ? response.data.data : [];
-        return resolve({data: recipeList});
-      }, function(err) {
-        return reject(err);
-      });
-    });
+    return $resource('noopy-api/me/beer/list').get(options).$promise;
   };
 
 });
