@@ -91,7 +91,7 @@ function($scope, $state, $translate, Resource, toaster, Recipe) {
             var index = self.recipeList.indexOf(recipe);
             if (index>-1) {
               self.recipeList.splice(index, 1);
-              RecipeList.recipeCount--;
+              self.recipePagination.count--;
             }
           },
           function(err) {
